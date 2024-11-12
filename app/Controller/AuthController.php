@@ -9,6 +9,16 @@ class AuthController extends Controller
     public function loginAction()
     {
         if ($this->method() === 'POST') {
+            if (
+                empty($_POST['email'])
+                ||
+                empty($_POST['password'])
+            ) {
+                $_SESSION['error'] = 'Informe todos os dados';
+
+                return $this->back();
+            }
+
             $user = User::getByEmail($_POST['email']);
 
             if (

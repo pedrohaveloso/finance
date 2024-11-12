@@ -1,12 +1,12 @@
 <form method="post">
     <label for="email">
         E-mail
-        <input type="text" id="email" name="email" />
+        <input type="text" id="email" name="email" required />
     </label>
 
     <label for="password">
         Senha
-        <input type="text" id="password" name="password" />
+        <input type="email" id="password" name="password" required />
     </label>
 
     <button type="submit">Entrar</button>
