@@ -8,7 +8,7 @@ abstract class Controller
 
     private const PAGES_DIR = __DIR__ . '/../View/pages';
 
-    protected function view(
+    protected function page(
         string $name,
         array $variables = [],
         string $layout = 'root'
