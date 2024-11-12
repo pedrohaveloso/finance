@@ -6,7 +6,7 @@
 
     <label for="password">
         Senha
-        <input type="email" id="password" name="password" required />
+        <input type="password" id="password" name="password" required />
     </label>
 
     <button type="submit">Entrar</button>
