@@ -59,7 +59,7 @@ CREATE TABLE
 		"date" DATE NOT NULL,
 		"type" ENUM ('input', 'output') NOT NULL,
 		"description" TEXT NOT NULL,
-		"value" DECIMAL NOT NULL,
+		"value" DECIMAL(15, 2) NOT NULL,
 		"month_id" INT NOT NULL,
 		FOREIGN KEY ("month_id") REFERENCES "Month" ("id"),
 		"user_id" INT DEFAULT NULL,
