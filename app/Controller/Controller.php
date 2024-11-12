@@ -34,4 +34,16 @@ abstract class Controller
         header("Location: $to");
         exit;
     }
+
+    protected function back(int $status = 302): never
+    {
+        http_response_code($status);
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        exit;
+    }
+
+    protected function method(): string
+    {
+        return $_SERVER['REQUEST_METHOD'];
+    }
 }

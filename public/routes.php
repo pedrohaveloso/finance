@@ -1,6 +1,13 @@
 <?php
 
 return [
-    '/login' => 'Auth@login',
-    '/register' => 'Auth@register'
+    'external' => [
+        '/' => 'Auth@login',
+        '/register' => 'Auth@register'
+    ],
+    'internal' => [
+        '/logout' => 'Auth@logout',
+
+        '/home' => 'Home@index'
+    ]
 ];

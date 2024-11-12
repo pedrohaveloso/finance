@@ -12,9 +12,16 @@
 </head>
 
 <body>
+    <script>
+        window["errorMessage"] = `<?= $_SESSION['error'] ?? ''; ?>`;
+        <?php unset($_SESSION['error']); ?>
+    </script>
+
     <?= $children ?>
 
-    <script src="/assets/bootstrap/5.3.3/bootstrap.bundle.min"></script>
+    <script src="/assets/bootstrap/5.3.3/bootstrap.bundle.min.js"></script>
+
+    <script type="module" src="/assets/js/error-modal.js"></script>
 </body>
 
 </html>

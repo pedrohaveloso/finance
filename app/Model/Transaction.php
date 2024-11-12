@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Repository;
+namespace App\Model;
 
-class Transaction
+class Transaction extends Model
 {
 }

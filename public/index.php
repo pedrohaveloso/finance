@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 // Inclusão do arquivo que faz o autoload das classes no projeto.
 include __DIR__ . '/../vendor/autoload.php';
 
@@ -12,13 +14,26 @@ $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 // Pegamos a rota atual de dentro das rotas existentes. Caso ela não exista, o
 // valor será nulo.
-$action = $routes[$path] ?? null;
+$action = $routes['internal'][$path] ?? null;
+
+// Fazemos a verificação se o usuário está logado (no caso de ser uma página 
+// interna) ou se ele não está logado (no caso de uma página externa).
+if (empty($action)) {
+    if (!empty($_SESSION['user'])) {
+        header('Location: /home') && exit;
+    }
+
+    $action = $routes['external'][$path] ?? null;
+} else {
+    if (empty($_SESSION['user'])) {
+        header('Location: /') && exit;
+    }
+}
 
 // Se o valor for nulo, colocamos o status code para 404 (página não encontrada)
 // e finalizamos a execução.
 if (empty($action)) {
-    http_response_code(404);
-    exit;
+    http_response_code(404) && exit;
 }
 
 // Caso seja encontrada, pegamos o Controller e o Método dele de dentro da rota

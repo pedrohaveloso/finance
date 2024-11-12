@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Repository;
+namespace App\Model;
 
-class Month
+class Month extends Model
 {
 }
