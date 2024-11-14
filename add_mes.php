@@ -11,7 +11,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-    <div class="card">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+            <div class="card">
         <div class="card-header">Adicionar Mês</div>
         <div class="card-body">
                 <div class="row" style="width: 100%;">
@@ -20,20 +23,18 @@
                             <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Selecione um Mês</button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                        <li><p>Janeiro</p></li>
-                                        <li><p>Fevereiro</p></li>
-                                        <li><p>Março</p></li>
-                                        <li><p>Abril</p></li>
-                                        <li><p>Maio</p></li>
-                                        <li><p>Junho</p></li>
-                                        <li><p>Julho</p></li>
-                                        <li><p>Agosto</p></li>
-                                        <li><p>Setembro</p></li>
-                                        <li><p>Outubro</p></li>
-                                        <li><p>Novembro</p></li>
-                                        <li><p>Dezembro</p></li>
-                                        <li><a class="dropdown-item" href="add_cat">Categoria</a></li>
-                                    </ul>
+                                        <li class="dropdown-item"><p>Janeiro</p></li>
+                                        <li class="dropdown-item"><p>Fevereiro</p></li>
+                                        <li class="dropdown-item"><p>Março</p></li>
+                                        <li class="dropdown-item"><p>Abril</p></li>
+                                        <li class="dropdown-item"><p>Maio</p></li>
+                                        <li class="dropdown-item"><p>Junho</p></li>
+                                        <li class="dropdown-item"><p>Julho</p></li>
+                                        <li class="dropdown-item"><p>Agosto</p></li>
+                                        <li class="dropdown-item"><p>Setembro</p></li>
+                                        <li class="dropdown-item"><p>Outubro</p></li>
+                                        <li class="dropdown-item"><p>Novembro</p></li>
+                                        <li class="dropdown-item"><p>Dezembro</p></li>
                                 </div>
                             </div>
                         </div>
@@ -52,6 +53,11 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+
+    </div>
+    
 
                 <div class="card" style="display: flex;">
                     <div class="mb-3">
@@ -67,11 +73,6 @@
                         <input type="" class="form-control" id="" placeholder="Lazer, Comida, etc">
                     </div>
                 </div>
-                
-
-
-
-        </div>
 
     </div>
 

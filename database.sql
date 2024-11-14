@@ -52,6 +52,8 @@ CREATE TABLE
     `user_id` INT DEFAULT NULL,
     FOREIGN KEY (`user_id`) REFERENCES `User` (`id`)
   );
+INSERT INTO month (name, year) VALUES ('January',2024);
+INSERT INTO month (name, year) VALUES ('February',2024);
 
 CREATE TABLE
   IF NOT EXISTS `Transaction` (
