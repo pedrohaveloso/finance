@@ -2,8 +2,9 @@
 session_start();
 require_once("conexao.php");
 
-$sql_meses = "SELECT name, year FROM month";
+$sql_meses = "SELECT id, name, year FROM month";
 $meses = mysqli_query($conn,$sql_meses);
+
 
 ?>
 
@@ -14,6 +15,7 @@ $meses = mysqli_query($conn,$sql_meses);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controle de Finanças</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
@@ -39,9 +41,15 @@ $meses = mysqli_query($conn,$sql_meses);
         </div>
     </div>
     <?php foreach ($meses as $mes):?>
+        <?php
+        $mes_id = $mes['id'];
+        $sql_transacoes = "SELECT date, type, description, value FROM transaction WHERE month_id = '$mes_id'";
+        $transacoes = mysqli_query($conn, $sql_transacoes);
+        ?>
         <div class="container border border-dark mb-5">
         <div class="container">
             <h3 class="mt-3"><?php echo $mes['name']." ".$mes['year']; ?></h3>
+            <a href="create-transacao.php" class="btn btn-primary">Nova transação</a>
             <div class="card mt-3 mb-3">
                 <div class="card-body">
                     Suas transações do mês
@@ -50,6 +58,7 @@ $meses = mysqli_query($conn,$sql_meses);
             <table class="table table-striped-columns">
                 <thead>
                     <tr>
+                        <th></th>
                         <th scope="col">Transação</th>
                         <th scope="col">Valor</th>
                         <th scope="col">Descrição</th>
@@ -59,54 +68,20 @@ $meses = mysqli_query($conn,$sql_meses);
                 </thead>
                 <tbody>
                     <tr>
-                        <th scope="row">Saída</th>
-                        <td>500,00</td>
-                        <td>Comprei um jogo novo</td>
-                        <td>20/10/2024</td>
-                        <td>Lazer</td>
+                        <?php foreach($transacoes as $transacao): ?>
+                        <td class="d-flex justify-content-center gap-3">
+                            <a href="edit-transacao.php" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                            <form action="acoes.php">
+                                <button class="btn btn-danger"><i class="bi bi-file-earmark-minus"></i></button>
+                            </form>
+                        </td>
+                        <th scope="row"><?php echo $transacao['type'];?></th>
+                        <td><?php echo $transacao['value']; ?></td>
+                        <td><?php echo $transacao['description']; ?></td>
+                        <td><?php echo $transacao['date']; ?></td>
+                        <td>Não finalizado</td>
                     </tr>
-                    <tr>
-                        <th scope="row">Entrada</th>
-                        <td>5000,00</td>
-                        <td>Pagamento do meu salário de novembro</td>
-                        <td>07/11/2024</td>
-                        <td>Trabalho</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Entrada</th>
-                        <td>0000,00</td>
-                        <td>Ex</td>
-                        <td>00/00/000</td>
-                        <td>Exemplo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Entrada</th>
-                        <td>0000,00</td>
-                        <td>Ex</td>
-                        <td>00/00/000</td>
-                        <td>Exemplo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Entrada</th>
-                        <td>0000,00</td>
-                        <td>Ex</td>
-                        <td>00/00/000</td>
-                        <td>Exemplo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Entrada</th>
-                        <td>0000,00</td>
-                        <td>Ex</td>
-                        <td>00/00/000</td>
-                        <td>Exemplo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Entrada</th>
-                        <td>0000,00</td>
-                        <td>Ex</td>
-                        <td>00/00/000</td>
-                        <td>Exemplo</td>
-                    </tr>
+                    <?php endforeach ?>            
                 </tbody>
             </table>
         </div>
