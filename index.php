@@ -46,46 +46,52 @@ $meses = mysqli_query($conn,$sql_meses);
         $sql_transacoes = "SELECT date, type, description, value FROM transaction WHERE month_id = '$mes_id'";
         $transacoes = mysqli_query($conn, $sql_transacoes);
         ?>
-        <div class="container border border-dark mb-5">
-        <div class="container">
-            <h3 class="mt-3"><?php echo $mes['name']." ".$mes['year']; ?></h3>
-            <a href="create_transacao.php" class="btn btn-primary">Nova transação</a>
-            <div class="card mt-3 mb-3">
-                <div class="card-body">
-                    Suas transações do mês
+        <details>
+            <summary>
+            <h3 class="mt-3 text-center"><?php echo $mes['name']." ".$mes['year']; ?></h3>
+            </summary>
+
+            <div class="container border border-dark mb-5">
+            <div class="container">
+                <h3 class="mt-3"><?php echo $mes['name']." ".$mes['year']; ?></h3>
+                <a href="create_transacao.php?mes_id=<?=$mes['id']?>" class="btn btn-primary">Nova transação</a>
+                <div class="card mt-3 mb-3">
+                    <div class="card-body">
+                        Suas transações do mês
+                    </div>
                 </div>
+                <table class="table table-striped-columns">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th scope="col">Transação</th>
+                            <th scope="col">Valor</th>
+                            <th scope="col">Descrição</th>
+                            <th scope="col">Data da Transação</th>
+                            <th>Categoria</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <?php foreach($transacoes as $transacao): ?>
+                            <td class="d-flex justify-content-center gap-3">
+                                <a href="edit-transacao.php" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                                <form action="acoes.php">
+                                    <button class="btn btn-danger"><i class="bi bi-file-earmark-minus"></i></button>
+                                </form>
+                            </td>
+                            <th scope="row"><?php echo $transacao['type'];?></th>
+                            <td><?php echo $transacao['value']; ?></td>
+                            <td><?php echo $transacao['description']; ?></td>
+                            <td><?php echo $transacao['date']; ?></td>
+                            <td>Não finalizado</td>
+                        </tr>
+                        <?php endforeach ?>            
+                    </tbody>
+                </table>
             </div>
-            <table class="table table-striped-columns">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th scope="col">Transação</th>
-                        <th scope="col">Valor</th>
-                        <th scope="col">Descrição</th>
-                        <th scope="col">Data da Transação</th>
-                        <th>Categoria</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <?php foreach($transacoes as $transacao): ?>
-                        <td class="d-flex justify-content-center gap-3">
-                            <a href="edit-transacao.php" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
-                            <form action="acoes.php">
-                                <button class="btn btn-danger"><i class="bi bi-file-earmark-minus"></i></button>
-                            </form>
-                        </td>
-                        <th scope="row"><?php echo $transacao['type'];?></th>
-                        <td><?php echo $transacao['value']; ?></td>
-                        <td><?php echo $transacao['description']; ?></td>
-                        <td><?php echo $transacao['date']; ?></td>
-                        <td>Não finalizado</td>
-                    </tr>
-                    <?php endforeach ?>            
-                </tbody>
-            </table>
         </div>
-    </div>
+    </details>
     <?php endforeach ?>
 
 
