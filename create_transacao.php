@@ -31,6 +31,8 @@ require_once("conexao.php");
                 <label for="txtValorNovaTransacao">Valor:</label>
                 <input type="number" id="txtValorNovaTransacao" name="txtValorNovaTransacao">
 
+                <input type="hidden" name="idMes" value="<?php echo $_GET['mes_id']?>">
+
                 <input type="submit" id="submit" name="submit">
                 <a href="index.php">Voltar</a>
             </form>
