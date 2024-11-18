@@ -1,9 +1,11 @@
 <?php
 session_start();
 require_once("conexao.php");
+require_once("constantes.php");
 
 $sql_meses = "SELECT id, name, year FROM month";
 $meses = mysqli_query($conn,$sql_meses);
+
 
 
 ?>
@@ -53,11 +55,11 @@ $meses = mysqli_query($conn,$sql_meses);
 
             <div class="container border border-dark mb-5">
             <div class="container">
-                <h3 class="mt-3"><?php echo $mes['name']." ".$mes['year']; ?></h3>
+                <h3 class="mt-3"><?php echo $months[$mes['name']]." ".$mes['year']; ?></h3>
                 <a href="create_transacao.php?mes_id=<?=$mes['id']?>" class="btn btn-primary">Nova transação</a>
                 <div class="card mt-3 mb-3">
                     <div class="card-body">
-                        Suas transações do mês
+                        Suas transações do mês.
                     </div>
                 </div>
                 <table class="table table-striped-columns">
@@ -80,7 +82,8 @@ $meses = mysqli_query($conn,$sql_meses);
                                     <button class="btn btn-danger"><i class="bi bi-file-earmark-minus"></i></button>
                                 </form>
                             </td>
-                            <th scope="row"><?php echo $transacao['type'];?></th>
+
+                            <th scope="row"><?php echo $types[$transacao['type']];?></th>
                             <td><?php echo $transacao['value']; ?></td>
                             <td><?php echo $transacao['description']; ?></td>
                             <td><?php echo $transacao['date']; ?></td>
