@@ -18,7 +18,7 @@ require_once("conexao.php");
         <h2>Adicionar nova Transação</h2>
         <div class="card">
             <h3>Digite as informações da nova Transação</h3>
-            <form action="action_novaTransacao.php" method="POST">
+            <form action="logicaCreateTransacao.php" method="POST">
                 <label for="txtDataNovaTransacao">Nome:</label>
                 <input type="date" id="txtDataNovaTransacao" name="txtDataNovaTransacao" placeholder="aaaa-mm-dd">
 
