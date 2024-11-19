@@ -1,3 +1,10 @@
+<?php
+session_start();
+require_once('conexao.php');
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -20,6 +27,7 @@
                     </div>
                     <div class="card-body jusfify-content-center">
                         <form action="acoes.php" class="text-center" method="POST">
+                            <input type="hidden" name="idTransação" value="<?=$transacao['id']?>">
                             <div class="mb-3">
                                 <label for="txtType">Tipo</label>
                                 <select name="txtType" id="txtType">

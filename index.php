@@ -57,6 +57,9 @@ $meses = mysqli_query($conn,$sql_meses);
             <div class="container">
                 <h3 class="mt-3"><?php echo $months[$mes['name']]." ".$mes['year']; ?></h3>
                 <a href="create_transacao.php?mes_id=<?=$mes['id']?>" class="btn btn-primary">Nova transação</a>
+                <form action="acoes.php" method="POST" class="float-end">
+                    <button onclick="return confirm('Tem certeza que deseja excluir este mês?')" name="delete_mes" class="btn btn-danger" type="submit" value="<?= $mes['id']?>">Deletar Mês</button>
+                </form>
                 <div class="card mt-3 mb-3">
                     <div class="card-body">
                         Suas transações do mês.

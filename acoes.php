@@ -24,6 +24,17 @@ if (isset($_POST['delete_transacao'])){
     header('Location: index.php');
     exit();
 
+}
+if (isset($_POST['delete_mes'])){
+    $mesId = mysqli_real_escape_string($conn,($_POST['delete_mes']));
+    $sqlDelete = "DELETE FROM month WHERE id = '$mesId'";
+    $sqlDeleteTransaction = "DELETE FROM transaction WHERE month_id = '$mesid'";
+
+    mysqli_query($conn, $sqlDelete);
+    mysqli_query($conn, $sqlDeleteTransaction);
+
+    header('Location: index.php');
+    exit();
 }  
 
 ?>
