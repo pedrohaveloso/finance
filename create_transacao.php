@@ -23,10 +23,9 @@ require_once("constantes.php");
                 <label for="txtDataNovaTransacao">Data:</label>
                 <input type="date" id="txtDataNovaTransacao" name="txtDataNovaTransacao" placeholder="aaaa-mm-dd">
 
-                <select id="txtTipo" class="form-select" aria-label="txtTipo">
-                    <?php foreach ($types as $chave => $valor): ?>
-                        <option value="<?php echo $chave; ?>"><?php echo $valor; ?></option>
-                    <?php endforeach ?>        
+                <select name="txtTipo" class="form-select" aria-label="txtTipo">
+                    <option value="input">Entrada</option>      
+                    <option value="output">Saída</option>      
                 </select>
                  
 
