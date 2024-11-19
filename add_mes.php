@@ -55,29 +55,6 @@
 
             </div>
         </div>
-
-    </div>
-    
-
-                <div class="card" style="display: flex;">
-                    <div class="mb-3">
-                        <label for="" class="form-label">Tipo</label>
-                        <input type="" class="form-control" id="" placeholder="Entrada,Saída">
-                    </div>
-                    <div class="mb-3">
-                        <label for="" class="form-label">Valor</label>
-                        <input type="" class="form-control" id="" placeholder="Entrada,Saída">
-                    </div>
-                    <div class="mb-3">
-                        <label for="" class="form-label">Categoria</label>
-                        <input type="" class="form-control" id="" placeholder="Lazer, Comida, etc">
-                    </div>
-                </div>
-
-    </div>
-
-
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
