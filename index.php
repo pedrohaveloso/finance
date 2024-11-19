@@ -78,8 +78,8 @@ $meses = mysqli_query($conn,$sql_meses);
                             <?php foreach($transacoes as $transacao): ?>
                             <td class="d-flex justify-content-center gap-3">
                                 <a href="edit_transacao.php" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
-                                <form action="acoes.php">
-                                    <button class="btn btn-danger"><i class="bi bi-file-earmark-minus"></i></button>
+                                <form action="acoes.php" method="POST">
+                                    <button onclick="return confirm('Tem certeza que deseja excluir esta transação?')" name="delete_transacao" class="btn btn-danger" type="submit"value="<?=$transacao['id']?>" ><i class="bi bi-file-earmark-minus"></i></button>
                                 </form>
                             </td>
 

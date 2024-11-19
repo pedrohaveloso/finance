@@ -15,6 +15,15 @@ if (isset($_POST['create_transacao'])){
     header('Location: index.php');
     exit();
 }
-    
+
+if (isset($_POST['delete_transacao'])){
+    $transacaoId = mysqli_real_escape_string($conn,($_POST['delete_transacao']));
+    $sqlDelete = "DELETE FROM transaction WHERE id = '$transacaoId'";
+    mysqli_query($conn, $sqlDelete);
+
+    header('Location: index.php');
+    exit();
+
+}  
 
 ?>
