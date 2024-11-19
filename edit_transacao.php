@@ -19,7 +19,7 @@
                     </h4>
                     </div>
                     <div class="card-body jusfify-content-center">
-                        <form action="acoes.php" class="text-center">
+                        <form action="acoes.php" class="text-center" method="POST">
                             <div class="mb-3">
                                 <label for="txtType">Tipo</label>
                                 <select name="txtType" id="txtType">
