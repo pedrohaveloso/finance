@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once("conexao.php");
+require_once("constantes.php");
 ?>
 
 
@@ -22,8 +23,12 @@ require_once("conexao.php");
                 <label for="txtDataNovaTransacao">Data:</label>
                 <input type="date" id="txtDataNovaTransacao" name="txtDataNovaTransacao" placeholder="aaaa-mm-dd">
 
-                <label for="txtTipoNovaTransacao">Tipo:</label>
-                <input type="text" id="txtTipoNovaTransacao" name="txtTipoNovaTransacao">
+                <select id="txtTipo" class="form-select" aria-label="txtTipo">
+                    <?php foreach ($types as $chave => $valor): ?>
+                        <option value="<?php echo $chave; ?>"><?php echo $valor; ?></option>
+                    <?php endforeach ?>        
+                </select>
+                 
 
                 <label for="txtDescricaoNovaTransacao">Descrição:</label>
                 <input type="text" id="txtDescricaoNovaTransacao" name="txtDescricaoNovaTransacao">
@@ -33,7 +38,7 @@ require_once("conexao.php");
 
                 <input type="hidden" name="idMes" value="<?php echo $_GET['mes_id']?>">
 
-                <input type="submit" id="submit" name="submit">
+                <button type="submit" id="create_transacao" name="create_transacao">Enviar</button>
                 <a href="index.php">Voltar</a>
             </form>
             </div>
