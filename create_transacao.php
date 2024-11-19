@@ -19,7 +19,7 @@ require_once("constantes.php");
         <h2>Adicionar nova Transação</h2>
         <div class="card">
             <h3>Digite as informações da nova Transação</h3>
-            <form action="logicaCreateTransacao.php" method="POST">
+            <form action="acoes.php" method="POST">
                 <label for="txtDataNovaTransacao">Data:</label>
                 <input type="date" id="txtDataNovaTransacao" name="txtDataNovaTransacao" placeholder="aaaa-mm-dd">
 
