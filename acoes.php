@@ -30,8 +30,10 @@ if (isset($_POST['delete_mes'])){
     $sqlDelete = "DELETE FROM month WHERE id = '$mesId'";
     $sqlDeleteTransaction = "DELETE FROM transaction WHERE month_id = '$mesId'";
 
-    mysqli_query($conn, $sqlDelete);
+    
     mysqli_query($conn, $sqlDeleteTransaction);
+    mysqli_query($conn, $sqlDelete);
+    
 
     header('Location: index.php');
     exit();
