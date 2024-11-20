@@ -6,7 +6,7 @@ require_once("constantes.php");
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,31 +15,47 @@ require_once("constantes.php");
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container border border-dark mb-5">
-        <h2>Adicionar nova Transação</h2>
-        <div class="card">
-            <h3>Digite as informações da nova Transação</h3>
-            <form action="acoes.php" method="POST">
-                <label for="txtDataNovaTransacao">Data:</label>
-                <input type="date" id="txtDataNovaTransacao" name="txtDataNovaTransacao" placeholder="aaaa-mm-dd">
+    <div class="container mt-3">
+        <div class="row justify-content-center">
+            <div class="col-sm-7">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Nova Transação</h4>
 
-                <select name="txtTipo" class="form-select" aria-label="txtTipo">
-                    <option value="input">Entrada</option>      
-                    <option value="output">Saída</option>      
-                </select>
-                 
-
-                <label for="txtDescricaoNovaTransacao">Descrição:</label>
-                <input type="text" id="txtDescricaoNovaTransacao" name="txtDescricaoNovaTransacao">
-
-                <label for="txtValorNovaTransacao">Valor:</label>
-                <input type="number" id="txtValorNovaTransacao" name="txtValorNovaTransacao">
-
-                <input type="hidden" name="idMes" value="<?php echo $_GET['mes_id']?>">
-
-                <button type="submit" id="create_transacao" name="create_transacao">Enviar</button>
-                <a href="index.php">Voltar</a>
-            </form>
+                    </div>
+                    <div class="card-body">
+                        <div class="card mb-3 text-center">
+                            Adicione as informações da sua transação
+                        </div>
+                        <form action="acoes.php" method="POST">
+                            <div class="mb-3">
+                                <label for="txtDataNovaTransacao">Data</label>
+                                <input type="date" id="txtDataNovaTransacao" name="txtDataNovaTransacao" placeholder="aaaa-mm-dd" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <select name="txtTipo" class="form-select" aria-label="txtTipo">
+                                    <option value="input">Entrada</option>      
+                                    <option value="output">Saída</option>      
+                                </select>
+                            </div>       
+                            <div class="mb-3">
+                                <label for="txtDescricaoNovaTransacao">Descrição:</label>
+                                <textarea name="txtDescricaoNovaTransacao" id="txtDescricaoNovaTransacao" rows="3" class="form-control"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="txtValorNovaTransacao">Valor:</label>
+                                <input type="number" id="txtValorNovaTransacao" name="txtValorNovaTransacao" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <input type="hidden" name="idMes" value="<?php echo $_GET['mes_id']?>">
+                            </div>
+                            <div class="mb-3">
+                                <a href="index.php" class="btn btn-danger">Voltar</a>    
+                                <button type="submit" id="create_transacao" name="create_transacao" class="btn btn-success float-end">Enviar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
