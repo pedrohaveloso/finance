@@ -97,11 +97,6 @@ $meses = mysqli_query($conn,$sql_meses);
                             <td></td>
                         </tr>
                         <?php endforeach ?>
-                        
-
-                        <div class="card">
-                            <h3><?php echo number_format($somaMes); ?></h3>
-                        </div>
                     </tbody>
                 </table>
             </div>
