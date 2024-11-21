@@ -39,4 +39,16 @@ if (isset($_POST['delete_mes'])){
     exit();
 }  
 
+if (isset($_POST['create_mes'])){
+    $mes = trim($_POST['txtMes']);
+    $ano = trim($_POST['txtAno']);
+
+    $sql = "INSERT INTO month (name, year) VALUES ('$mes', '$ano')";
+    $sqlinsert = mysqli_query($conn,$sql);
+
+    header('Location: index.php');
+    exit();
+
+}
+
 ?>

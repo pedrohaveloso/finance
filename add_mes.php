@@ -25,29 +25,27 @@
                     </div>
                     <div class="card-body">
                         <form action="acoes.php" method="POST">
-                            <div class="mb-3">
-                                <label for="txtNome">Mês</label>
-                                <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Selecione um Mês</button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                        <li class="dropdown-item"><p>Janeiro</p></li>
-                                        <li class="dropdown-item"><p>Fevereiro</p></li>
-                                        <li class="dropdown-item"><p>Março</p></li>
-                                        <li class="dropdown-item"><p>Abril</p></li>
-                                        <li class="dropdown-item"><p>Maio</p></li>
-                                        <li class="dropdown-item"><p>Junho</p></li>
-                                        <li class="dropdown-item"><p>Julho</p></li>
-                                        <li class="dropdown-item"><p>Agosto</p></li>
-                                        <li class="dropdown-item"><p>Setembro</p></li>
-                                        <li class="dropdown-item"><p>Outubro</p></li>
-                                        <li class="dropdown-item"><p>Novembro</p></li>
-                                        <li class="dropdown-item"><p>Dezembro</p></li>
-                                </div>
-                            </div>
+                                <label for="txtMes">Selecione um Mês</label>
+                                        <select class="form-select" name="txtMes">
+                                            <option value="January"><p>Janeiro</p></option>
+                                            <option value="February"><p>Fevereiro</p></option>
+                                            <option value="March"><p>Março</p></option>
+                                            <option value="April"><p>Abril</p></option>
+                                            <option value="May"><p>Maio</p></option>
+                                            <option value="June"><p>Junho</p></option>
+                                            <option value="July"><p>Julho</p></option>
+                                            <option value="August"><p>Agosto</p></option>
+                                            <option value="September"><p>Setembro</p></option>
+                                            <option value="October"><p>Outubro</p></option>
+                                            <option value="November"><p>Novembro</p></option>
+                                            <option value="December"><p>Dezembro</p></option>
+                                        </select>
+
                             <div class="mb-3">
                                 <label for="txtAno">Ano</label>
-                                <input type="number" class="form-control">
+                                <input type="number" class="form-control" name="txtAno">
                             </div>
+
                             <div class="mb-3">
                                 <button name="create_mes" type="submit" class="btn btn-success float-end"><i class="bi bi-floppy2-fill">  Salvar</i></button>
                             </div>
