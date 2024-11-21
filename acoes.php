@@ -9,6 +9,12 @@ if (isset($_POST['create_transacao'])){
     $valor = trim($_POST['txtValorNovaTransacao']);
     $id_mes= trim($_POST['idMes']);
 
+    if($tipo = 'output')
+    {
+        $valor = $valor * (-1);
+
+    }
+
     $sql="INSERT INTO transaction (date, type, description, value, month_id) VALUES ('$data', '$tipo', '$descricao', '$valor', '$id_mes')";
     $sqlinsert = mysqli_query($conn,$sql);
 

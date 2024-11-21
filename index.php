@@ -47,6 +47,10 @@ $meses = mysqli_query($conn,$sql_meses);
         $mes_id = $mes['id'];
         $sql_transacoes = "SELECT id,date, type, description, value FROM transaction WHERE month_id = '$mes_id'";
         $transacoes = mysqli_query($conn, $sql_transacoes);
+        $sql_soma = "SELECT SUM(value) AS total FROM transaction";
+        $soma = $conn->query($sql_soma);
+        $somaMes = $soma->fetch_assoc();
+        
         ?>
         <details>
             <summary>
@@ -90,9 +94,14 @@ $meses = mysqli_query($conn,$sql_meses);
                             <td><?php echo $transacao['value']; ?></td>
                             <td><?php echo $transacao['description']; ?></td>
                             <td><?php echo $transacao['date']; ?></td>
-                            <td>Não finalizado</td>
+                            <td></td>
                         </tr>
-                        <?php endforeach ?>            
+                        <?php endforeach ?>
+                        
+
+                        <div class="card">
+                            <h3><?php echo number_format($somaMes); ?></h3>
+                        </div>
                     </tbody>
                 </table>
             </div>
