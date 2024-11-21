@@ -8,6 +8,7 @@ if (isset($_POST['create_transacao'])){
     $descricao = trim($_POST['txtDescricaoNovaTransacao']);
     $valor = trim($_POST['txtValorNovaTransacao']);
     $id_mes= trim($_POST['idMes']);
+    $categoria = trim($_POST['txtCat']);
 
     if($tipo = 'output')
     {

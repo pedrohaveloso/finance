@@ -2,6 +2,9 @@
 session_start();
 require_once("conexao.php");
 require_once("constantes.php");
+
+$sql = "SELECT * FROM category";
+$categorias = mysqli_query($conn, $sql);
 ?>
 
 
@@ -33,11 +36,20 @@ require_once("constantes.php");
                                 <input type="date" id="txtDataNovaTransacao" name="txtDataNovaTransacao" placeholder="aaaa-mm-dd" class="form-control">
                             </div>
                             <div class="mb-3">
+                                <label for="txtTipo">Tipo de Entrada</label>
                                 <select name="txtTipo" class="form-select" aria-label="txtTipo">
                                     <option value="input">Entrada</option>      
                                     <option value="output">Saída</option>      
                                 </select>
                             </div>       
+                            <div class="mb-3">
+                                <label for="txtCat">Categorias</label>
+                                <select  name="txtCa" class="form-select" aria-label="txtCat">
+                                <?php foreach ($categorias as $categoria): ?>
+                                    <option value = "<?=$categoria['name']?>"><?php echo $categoria['name']?> </option>
+                                <?php endforeach?>;
+                                </select>
+                            </div>
                             <div class="mb-3">
                                 <label for="txtDescricaoNovaTransacao">Descrição:</label>
                                 <textarea name="txtDescricaoNovaTransacao" id="txtDescricaoNovaTransacao" rows="3" class="form-control"></textarea>
