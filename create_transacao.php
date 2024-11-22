@@ -44,7 +44,7 @@ $categorias = mysqli_query($conn, $sql);
                             </div>       
                             <div class="mb-3">
                                 <label for="txtCat">Categorias</label>
-                                <select  name="txtCa" class="form-select" aria-label="txtCat">
+                                <select  name="txtCat" class="form-select" aria-label="txtCat">
                                 <?php foreach ($categorias as $categoria): ?>
                                     <option value = "<?=$categoria['name']?>"><?php echo $categoria['name']?> </option>
                                 <?php endforeach?>;

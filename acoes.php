@@ -10,9 +10,14 @@ if (isset($_POST['create_transacao'])){
     $id_mes= trim($_POST['idMes']);
     $categoria = trim($_POST['txtCat']);
 
-    if($tipo = 'output')
+    if($tipo == 'output')
     {
         $valor = $valor * (-1);
+
+    }
+    elseif($tipo == 'input')
+    {
+        $valor = $valor * (1);
 
     }
 
