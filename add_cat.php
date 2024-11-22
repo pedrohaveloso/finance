@@ -26,7 +26,7 @@
                                 <input type="text" name="txtNome" id="txtNome" class="form-control">
                             </div>
                             <div class="mb-3">
-                                <button name="create-categoria" type="submit" class="btn btn-success float-end"><i class="bi bi-floppy2-fill">  Salvar</i></button>
+                                <button name="create_category" type="submit" class="btn btn-success float-end"><i class="bi bi-floppy2-fill">  Salvar</i></button>
                             </div>
                         </form>
                     </div>
