@@ -19,6 +19,11 @@ if (isset($_POST['create_transacao'])){
     $sql="INSERT INTO transaction (date, type, description, value, month_id) VALUES ('$data', '$tipo', '$descricao', '$valor', '$id_mes')";
     $sqlinsert = mysqli_query($conn,$sql);
 
+    $id_transacao = mysqli_insert_id($conn);
+
+    $sql_category = "INSERT INTO transactioncategory (transaction_id, category_id) VALUES ('$id_transacao',$categoria)";
+    $insert_category = mysqli_query($conn,$sql_category);
+
     header('Location: index.php');
     exit();
 }

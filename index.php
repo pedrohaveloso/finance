@@ -64,6 +64,11 @@ $meses = mysqli_query($conn,$sql_meses);
                 <form action="acoes.php" method="POST" class="float-end">
                     <button onclick="return confirm('Tem certeza que deseja excluir este mês?')" name="delete_mes" class="btn btn-danger" type="submit" value="<?= $mes['id']?>">Deletar Mês</button>
                 </form>
+                <div class="card mt-3 mb-4">
+                    <div class="card-body">
+                        Resumo Mensal
+                    </div>
+                </div>
                 <div class="card mt-3 mb-3">
                     <div class="card-body">
                         Suas transações do mês.
@@ -94,7 +99,6 @@ $meses = mysqli_query($conn,$sql_meses);
                             <td><?php echo $transacao['value']; ?></td>
                             <td><?php echo $transacao['description']; ?></td>
                             <td><?php echo $transacao['date']; ?></td>
-                            <td></td>
                         </tr>
                         <?php endforeach ?>
                     </tbody>

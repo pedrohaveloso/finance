@@ -36,7 +36,7 @@ $categorias = mysqli_query($conn, $sql);
                                 <input type="date" id="txtDataNovaTransacao" name="txtDataNovaTransacao" placeholder="aaaa-mm-dd" class="form-control">
                             </div>
                             <div class="mb-3">
-                                <label for="txtTipo">Tipo de Entrada</label>
+                                <label for="txtTipo">Tipo de movimentação</label>
                                 <select name="txtTipo" class="form-select" aria-label="txtTipo">
                                     <option value="input">Entrada</option>      
                                     <option value="output">Saída</option>      
@@ -44,9 +44,9 @@ $categorias = mysqli_query($conn, $sql);
                             </div>       
                             <div class="mb-3">
                                 <label for="txtCat">Categorias</label>
-                                <select  name="txtCa" class="form-select" aria-label="txtCat">
+                                <select  name="txtCat" class="form-select" aria-label="txtCat">
                                 <?php foreach ($categorias as $categoria): ?>
-                                    <option value = "<?=$categoria['name']?>"><?php echo $categoria['name']?> </option>
+                                    <option value = "<?=$categoria['id']?>"><?php echo $categoria['name']?> </option>
                                 <?php endforeach?>;
                                 </select>
                             </div>
