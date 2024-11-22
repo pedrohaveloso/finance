@@ -1,5 +1,4 @@
 CREATE DATABASE IF NOT EXISTS `Finance`;
-USE Finance;
 
 CREATE TABLE
   IF NOT EXISTS `Category` (
