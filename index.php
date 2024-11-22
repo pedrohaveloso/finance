@@ -4,7 +4,7 @@ require_once("conexao.php");
 require_once("constantes.php");
 
 $sql_meses = "SELECT id, name, year FROM month";
-$meses = mysqli_query($conn,$sql_meses);
+$meses = mysqli_query($conn, $sql_meses);
 
 
 
@@ -22,27 +22,35 @@ $meses = mysqli_query($conn,$sql_meses);
 </head>
 
 <body>
-    <h1>
-        Finanças
-
-    </h1>
-    <div class="btn-group" style="width: 100%;">
-        <div class="dropdown">
-            <button class="btn btn-success dropdown-toggle text-white" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Adicionar</button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="add_mes.php">Mês</a></li>
-                <li><a class="dropdown-item" href="add_cat.php">Categoria</a></li>
-            </ul>
-        </div>
-        <div class="dropdown">
-            <button class="btn btn-warning dropdown-toggle text-white" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Filtrar</button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="#"> por Mês</a></li>
-                    <li><a class="dropdown-item" href="#">por Categoria</a></li>
-                </ul>
+    <div class="container-">
+        <div class="row">
+            <div class="col-bg-7">
+                <div class="card text-center">
+                    <h1>
+                        Finance Control
+                    </h1>
+                    <div class="btn-group justify-content-center" style="width: 100%;">
+                        <div class="dropdown">
+                            <button class="btn btn-success dropdown-toggle text-white" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Adicionar</button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="add_mes.php">Mês</a></li>
+                                <li><a class="dropdown-item" href="add_cat.php">Categoria</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn btn-warning dropdown-toggle text-white" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Filtrar</button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="#"> por Mês</a></li>
+                                <li><a class="dropdown-item" href="#">por Categoria</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <?php foreach ($meses as $mes):?>
+
+    <?php foreach ($meses as $mes): ?>
         <?php
         $mes_id = $mes['id'];
         $sql_transacoes = "SELECT id,date, type, description, value FROM transaction WHERE month_id = '$mes_id'";
@@ -50,76 +58,75 @@ $meses = mysqli_query($conn,$sql_meses);
         $sql_soma = "SELECT SUM(value) AS total FROM transaction";
         $soma = $conn->query($sql_soma);
         $somaMes = $soma->fetch_assoc();
-        
+
         ?>
         <details>
             <summary>
-            <h3 class="mt-3 text-center"><?php echo $mes['name']." ".$mes['year']; ?></h3>
+                <h3 class="mt-3 text-center"><?php echo $mes['name'] . " " . $mes['year']; ?></h3>
             </summary>
 
             <div class="container border border-dark mb-5">
-            <div class="container">
-                <h3 class="mt-3"><?php echo $months[$mes['name']]." ".$mes['year']; ?></h3>
-                <a href="create_transacao.php?mes_id=<?=$mes['id']?>" class="btn btn-primary">Nova transação</a>
-                <form action="acoes.php" method="POST" class="float-end">
-                    <button onclick="return confirm('Tem certeza que deseja excluir este mês?')" name="delete_mes" class="btn btn-danger" type="submit" value="<?= $mes['id']?>">Deletar Mês</button>
-                </form>
-                <div class="card mt-3 mb-4">
-                    <div class="card-body">
-                        Resumo Mensal
+                <div class="container">
+                    <h3 class="mt-3"><?php echo $months[$mes['name']] . " " . $mes['year']; ?></h3>
+                    <a href="create_transacao.php?mes_id=<?= $mes['id'] ?>" class="btn btn-primary">Nova transação</a>
+                    <form action="acoes.php" method="POST" class="float-end">
+                        <button onclick="return confirm('Tem certeza que deseja excluir este mês?')" name="delete_mes" class="btn btn-danger" type="submit" value="<?= $mes['id'] ?>">Deletar Mês</button>
+                    </form>
+                    <div class="card mt-3 mb-4">
+                        <div class="card-body">
+                            Resumo Mensal
+                        </div>
                     </div>
-                </div>
-                <div class="card mt-3 mb-3">
-                    <div class="card-body">
-                        Suas transações do mês.
+                    <div class="card mt-3 mb-3">
+                        <div class="card-body">
+                            Suas transações do mês.
+                        </div>
                     </div>
-                </div>
-                <table class="table table-striped-columns">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th scope="col">Transação</th>
-                            <th scope="col">Valor</th>
-                            <th scope="col">Descrição</th>
-                            <th scope="col">Data da Transação</th>
-                            <th>Categoria</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <?php foreach($transacoes as $transacao): ?>
-                                <?php
-                                $sql_categoria = "SELECT category.name FROM category INNER JOIN transactioncategory ON category.id = transactioncategory.category_id WHERE transactioncategory.transaction_id = {$transacao['id']}";
-                                $consulta_categoria = mysqli_query($conn, $sql_categoria);
-                                $categoria = mysqli_fetch_assoc($consulta_categoria);    
-                                ?>
-                            <td class="d-flex justify-content-center gap-3">
-                                <a href="edit_transacao.php/id=<?=$transacao['id']?>" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
-                                <form action="acoes.php" method="POST">
-                                    <button onclick="return confirm('Tem certeza que deseja excluir esta transação?')" name="delete_transacao" class="btn btn-danger" type="submit"value="<?=$transacao['id']?>" ><i class="bi bi-file-earmark-minus"></i></button>
-                                </form>
-                            </td>
-                               
-                            <th scope="row"><?php echo $types[$transacao['type']];?></th>
-                            <td><?php echo $transacao['value']; ?></td>
-                            <td><?php echo $transacao['description']; ?></td>
-                            <td><?php echo $transacao['date']; ?></td>
-                            <td><?php if ($categoria){
-                                    echo $categoria['name'];
-                                        
-                            }
-                            
-                            ?>
-                    
-                            
-                            </td>
-                        </tr>
+                    <table class="table table-striped-columns">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th scope="col">Transação</th>
+                                <th scope="col">Valor</th>
+                                <th scope="col">Descrição</th>
+                                <th scope="col">Data da Transação</th>
+                                <th>Categoria</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <?php foreach ($transacoes as $transacao): ?>
+                                    <?php
+                                    $sql_categoria = "SELECT category.name FROM category INNER JOIN transactioncategory ON category.id = transactioncategory.category_id WHERE transactioncategory.transaction_id = {$transacao['id']}";
+                                    $consulta_categoria = mysqli_query($conn, $sql_categoria);
+                                    $categoria = mysqli_fetch_assoc($consulta_categoria);
+                                    ?>
+                                    <td class="d-flex justify-content-center gap-3">
+                                        <a href="edit_transacao.php/id=<?= $transacao['id'] ?>" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                                        <form action="acoes.php" method="POST">
+                                            <button onclick="return confirm('Tem certeza que deseja excluir esta transação?')" name="delete_transacao" class="btn btn-danger" type="submit" value="<?= $transacao['id'] ?>"><i class="bi bi-file-earmark-minus"></i></button>
+                                        </form>
+                                    </td>
+
+                                    <th scope="row"><?php echo $types[$transacao['type']]; ?></th>
+                                    <td><?php echo $transacao['value']; ?></td>
+                                    <td><?php echo $transacao['description']; ?></td>
+                                    <td><?php echo $transacao['date']; ?></td>
+                                    <td><?php if ($categoria) {
+                                            echo $categoria['name'];
+                                        }
+
+                                        ?>
+
+
+                                    </td>
+                            </tr>
                         <?php endforeach ?>
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-    </details>
+        </details>
     <?php endforeach ?>
 
 
