@@ -9,7 +9,7 @@ if (!isset($_GET['id'])) {
 
 $categoriaId = mysqli_real_escape_string($conn, $_GET['id']);
 
-$sql = "SELECT * FROM transacao WHERE id = '{$categoriaId}'";
+$sql = "SELECT * FROM transaction WHERE id = '{$categoriaId}'";
 $query = mysqli_query($conn, $sql);
 
 if (!$query || mysqli_num_rows($query) == 0) {
@@ -47,7 +47,7 @@ $categorias = mysqli_fetch_all($query, MYSQLI_ASSOC);
                     </div>
                     <div class="card-body jusfify-content-center">
                         <?php if($transacao): ?>
-                        <form action="acoes.php" class="text-center" method="POST">
+                        <form action="index.php" class="text-center" method="POST">
                             <input type="hidden" name="idTransação" value="<?=$transacao['id']?>">
                             <div class="mb-3">
                                 <label for="txtType">Tipo</label>

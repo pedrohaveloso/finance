@@ -99,15 +99,19 @@ $meses = mysqli_query($conn,$sql_meses);
                                     <button onclick="return confirm('Tem certeza que deseja excluir esta transação?')" name="delete_transacao" class="btn btn-danger" type="submit"value="<?=$transacao['id']?>" ><i class="bi bi-file-earmark-minus"></i></button>
                                 </form>
                             </td>
-
+                               
                             <th scope="row"><?php echo $types[$transacao['type']];?></th>
                             <td><?php echo $transacao['value']; ?></td>
                             <td><?php echo $transacao['description']; ?></td>
                             <td><?php echo $transacao['date']; ?></td>
                             <td><?php if ($categoria){
                                     echo $categoria['name'];
+                                        
                             }
+                            
                             ?>
+                    
+                            
                             </td>
                         </tr>
                         <?php endforeach ?>

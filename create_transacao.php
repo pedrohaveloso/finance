@@ -39,7 +39,7 @@ $categorias = mysqli_query($conn, $sql);
                             </div>
                             <div class="mb-3">
                                 <label for="txtTipo">Tipo de movimentação</label>
-                                <select id="txtTipo" class="form-select" aria-label="txtTipo">
+                                <select name="txtTipo" id="txtTipo" class="form-select" aria-label="txtTipo">
                                     <?php foreach ($types as $chave => $valor): ?>
                                         <option value="<?php echo $chave; ?>"><?php echo $valor; ?></option>
                                     <?php endforeach ?>
