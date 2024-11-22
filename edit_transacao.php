@@ -24,7 +24,7 @@ require_once('conexao.php');
                     <div class="card-header">
                     <h4 class="text-center">
                         Editando Transação
-                        <a href="index.php" class="btn btn-danger float-start"><i class="bi bi-arrow-return-left"></i></a>
+                        <a href="./ " class="btn btn-danger float-start"><i class="bi bi-arrow-return-left"></i></a>
                     </h4>
                     </div>
                     <div class="card-body jusfify-content-center">
