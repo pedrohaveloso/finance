@@ -2,6 +2,8 @@
 session_start();
 require_once('conexao.php');
 
+
+
 ?>
 
 
@@ -48,11 +50,9 @@ require_once('conexao.php');
                                 <input type="date" name="txtData" id="txtData" class="form-control" value="<?=$transacao['date']?>">
                             </div>
                             <div class="mb-3">
-                                <label for="txtCategoria">Categoria</label>
-                                <select name="txtCategoria" id="txtCategoria">
-                                    <option value="">Exemplo</option>
-                                    <option value="">Exemplo</option>
-                                    <option value="">Exemplo</option>
+                                <label for="txtCat">Categoria</label>
+                                <select name="txtCat" id="txtCat">
+                                <input  type="txtNome" type= "txtCat" name="txtCat" id="txtCat" value="<?=$categorias['name']?>" class="form-control">
                                 </select>
                             </div>
                         </form>
