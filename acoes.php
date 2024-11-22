@@ -68,4 +68,13 @@ if (isset($_POST['create_mes'])){
 
 }
 
+if (isset($_POST['create_category'])){
+    $nome = trim($_POST['txtNome']);
+    $sql_insert = "INSERT INTO category (name) VALUES ('$nome')";
+    $insert - mysqli_query($conn, $sql_insert);
+    
+    header('Location: index.php');
+    exit();
+}
+
 ?>
