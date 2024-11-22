@@ -88,6 +88,11 @@ $meses = mysqli_query($conn,$sql_meses);
                     <tbody>
                         <tr>
                             <?php foreach($transacoes as $transacao): ?>
+                                <?php
+                                $sql_categoria = "SELECT category.name FROM category INNER JOIN transactioncategory ON category.id = transactioncategory.category_id WHERE transactioncategory.transaction_id = {$transacao['id']}";
+                                $consulta_categoria = mysqli_query($conn, $sql_categoria);
+                                $categoria = mysqli_fetch_assoc($consulta_categoria);    
+                                ?>
                             <td class="d-flex justify-content-center gap-3">
                                 <a href="edit_transacao.php/id=<?=$transacao['id']?>" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
                                 <form action="acoes.php" method="POST">
@@ -99,6 +104,11 @@ $meses = mysqli_query($conn,$sql_meses);
                             <td><?php echo $transacao['value']; ?></td>
                             <td><?php echo $transacao['description']; ?></td>
                             <td><?php echo $transacao['date']; ?></td>
+                            <td><?php if ($categoria){
+                                    echo $categoria['name'];
+                            }
+                            ?>
+                            </td>
                         </tr>
                         <?php endforeach ?>
                     </tbody>
