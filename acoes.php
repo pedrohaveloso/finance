@@ -35,8 +35,11 @@ if (isset($_POST['create_transacao'])){
 
 if (isset($_POST['delete_transacao'])){
     $transacaoId = mysqli_real_escape_string($conn,($_POST['delete_transacao']));
+    $sqlDeleteCategory = "DELETE FROM transactioncategory  WHERE transaction_id = '$transacaoId'";
     $sqlDelete = "DELETE FROM transaction WHERE id = '$transacaoId'";
+    mysqli_query($conn, $sqlDeleteCategory);
     mysqli_query($conn, $sqlDelete);
+    
 
     header('Location: index.php');
     exit();
