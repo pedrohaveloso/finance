@@ -37,8 +37,8 @@ if (isset($_POST['delete_transacao'])){
 }
 if (isset($_POST['delete_mes'])){
     $mesId = mysqli_real_escape_string($conn,($_POST['delete_mes']));
-    $sqlDelete = "DELETE FROM month WHERE id = '$mesId'";
     $sqlDeleteTransaction = "DELETE FROM transaction WHERE month_id = '$mesId'";
+    $sqlDelete = "DELETE FROM month WHERE id = '$mesId'";
 
     
     mysqli_query($conn, $sqlDeleteTransaction);
