@@ -89,7 +89,7 @@ $categorias = mysqli_fetch_all($query, MYSQLI_ASSOC);
                                 <label for="txtCat">Categoria</label>
                                 <select name="txtCat" id="txtCat" class="form-select">
                                     <?php foreach ($categorias as $categoria): ?>
-                                        <option value="<?=$categoria['id']?>" <?=$categoria['id'] == $transacao['category_id'] ? 'selected' : ''?>><?=$categoria['name']?></option>
+                                        <option value="<?=$categoria['id']?>"><?=$categoria['name']?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
