@@ -22,33 +22,21 @@ $meses = mysqli_query($conn, $sql_meses);
 </head>
 
 <body>
-    <div class="container-">
-        <div class="row">
-            <div class="col-bg-7">
-                <div class="card text-center">
-                    <h1>
-                        Finance Control
-                    </h1>
-                    <div class="btn-group justify-content-center" style="width: 100%;">
-                        <div class="dropdown">
-                            <button class="btn btn-success dropdown-toggle text-white" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Adicionar</button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="add_mes.php">Mês</a></li>
-                                <li><a class="dropdown-item" href="add_cat.php">Categoria</a></li>
-                            </ul>
-                        </div>
-                        <div class="dropdown">
-                            <button class="btn btn-warning dropdown-toggle text-white" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Filtrar</button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#"> por Mês</a></li>
-                                <li><a class="dropdown-item" href="#">por Categoria</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+    <nav class="navbar navbar-expand-lg bg-dark text-white">
+        <div class="container-fluid d-flex align-items-center">
+            <h2 class="mb-0 fw-bold">
+                Finance Control 
+                <i class="bi bi-wallet-fill"></i>
+            </h2>
+            <div>
+                <a class="btn bg-light fw-bold" href="add_mes.php"><i class="bi bi-plus-circle"></i> Mês</a>
+                <a class="btn bg-light fw-bold  " href="add_cat.php"><i class="bi bi-plus-circle"></i> Categoria</a>  
             </div>
+            
         </div>
-    </div>
+    </nav>
+
+
 
     <?php foreach ($meses as $mes): ?>
         <?php

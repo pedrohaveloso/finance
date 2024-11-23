@@ -7,6 +7,19 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
+<nav class="navbar navbar-expand-lg bg-dark text-white">
+        <div class="container-fluid d-flex align-items-center">
+            <h2 class="mb-0 fw-bold">
+                Finance Control 
+                <i class="bi bi-wallet-fill"></i>
+            </h2>
+            <div>
+                <a class="btn bg-light fw-bold" href="index.php"><i class="bi bi-house"></i> ínicio</a>
+                <a class="btn bg-light fw-bold  " href="add_cat.php"><i class="bi bi-plus-circle"></i> Categoria</a>        
+            </div>
+            
+        </div>
+    </nav>
 <body>
     <div class="container mt-5">
         <div class="row justify-content-center">
