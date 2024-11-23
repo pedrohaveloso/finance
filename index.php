@@ -41,10 +41,10 @@ $meses = mysqli_query($conn, $sql_meses);
         $mes_id = $mes['id'];
         $sql_transacoes = "SELECT id,date, type, description, value FROM transaction WHERE month_id = '$mes_id'";
         $transacoes = mysqli_query($conn, $sql_transacoes);
-        $sql_entrada = "SELECT SUM(value) AS total FROM transaction WHERE type = 'input'";
+        $sql_entrada = "SELECT SUM(value) AS total FROM transaction WHERE type = 'input' AND month_id='$mes_id'";
         $entrada = $conn->query($sql_entrada);
         $input = $entrada->fetch_assoc();
-        $sql_saida = "SELECT SUM(value) AS total FROM transaction WHERE type = 'output'";
+        $sql_saida = "SELECT SUM(value) AS total FROM transaction WHERE type = 'output' AND month_id='$mes_id'";
         $saida = $conn->query($sql_saida);
         $output = $saida->fetch_assoc();
         
