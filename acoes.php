@@ -69,7 +69,7 @@ if (isset($_POST['create_mes'])){
 if (isset($_POST['create_category'])){
     $nome = trim($_POST['txtNome']);
     $sql_insert = "INSERT INTO category (name) VALUES ('$nome')";
-    $insert - mysqli_query($conn, $sql_insert);
+    $insert = mysqli_query($conn, $sql_insert);
     
     header('Location: index.php');
     exit();
@@ -80,8 +80,9 @@ if (isset($_POST['edit_category'])){
     $descricao = trim($_POST['txtDescricao']);
     $data = trim($_POST['txtData']);
     $categoria = trim($_POST['txtCat']);
-    $update = "UPDATE transaction SET value VALUES ('$valor')";
-    mysqli_query($conn, $update);
+    $update = "UPDATE transaction SET value = '$valor', description = '$descricao', date = '$data'";
+
+    $query = mysqli_query($conn, $update);
 
     header('Location: index.php');
     exit();
