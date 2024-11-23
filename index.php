@@ -67,8 +67,24 @@ $meses = mysqli_query($conn, $sql_meses);
                             <p>Resumo Mensal</p>
                         </div>
                         <div class="card-body">
-                            <div class="card"><p><?php echo "ENTRADAS:" . $input['total']; ?></p> </div>
-                            <div class="card"><p><?php echo "SAÍDAS:" . $output['total']; ?></p> </div>
+                            <div class="card-group">
+                                <div class="card text-center fw-bold" style="background-color: rgb(204,255,204); "><p><?php echo "ENTRADAS: " . $input['total']; ?></p> </div>
+                                <div class="card text-center fw-bold" style="background-color: rgb(255,153,153);"><p><?php echo "SAÍDAS: " . $output['total']; ?></p> </div>
+                                
+                                <?php
+                                    $resultadoMes = ($input['total'] - $output['total']);
+                                    if($resultadoMes > 0) {
+                                        $txtColor="text-success";}
+                                    elseif($resultadoMes < 0) {
+                                        $txtColor="text-danger";}
+                                    else{$txtColor="text-white";}
+                                ?>
+                                <div class="card text-center fw-bold <?php echo $txtColor; ?>" style="background-color: rgb(204,229,255);">
+                                    <p>
+                                        <?php echo "RESULTADO MÊS: " . $resultadoMes?>
+                                    </p> 
+                                </div>
+                            </div>
                         </div>
 
                             
