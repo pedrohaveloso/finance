@@ -90,7 +90,7 @@ $meses = mysqli_query($conn, $sql_meses);
                                     $categoria = mysqli_fetch_assoc($consulta_categoria);
                                     ?>
                                     <td class="d-flex justify-content-center gap-3">
-                                        <a href="edit_transacao.php/id=<?= $transacao['id'] ?>" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                                        <a href="edit_transacao.php?id=<?= $transacao['id'] ?>" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
                                         <form action="acoes.php" method="POST">
                                             <button onclick="return confirm('Tem certeza que deseja excluir esta transação?')" name="delete_transacao" class="btn btn-danger" type="submit" value="<?= $transacao['id'] ?>"><i class="bi bi-file-earmark-minus"></i></button>
                                         </form>

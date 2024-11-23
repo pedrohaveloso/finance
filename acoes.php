@@ -10,12 +10,7 @@ if (isset($_POST['create_transacao'])){
     $id_mes= trim($_POST['idMes']);
     $categoria = trim($_POST['txtCat']);
 
-    if($tipo == 'output')
-    {
-        $valor = $valor * (-1);
-
-    }
-    elseif($tipo == 'input')
+    if($tipo == 'input' || 'output')
     {
         $valor = $valor * (1);
 
@@ -74,10 +69,24 @@ if (isset($_POST['create_mes'])){
 if (isset($_POST['create_category'])){
     $nome = trim($_POST['txtNome']);
     $sql_insert = "INSERT INTO category (name) VALUES ('$nome')";
-    $insert - mysqli_query($conn, $sql_insert);
+    $insert = mysqli_query($conn, $sql_insert);
     
     header('Location: index.php');
     exit();
+}
+
+if (isset($_POST['edit_category'])){
+    $valor = trim($_POST['txtValor']);
+    $descricao = trim($_POST['txtDescricao']);
+    $data = trim($_POST['txtData']);
+    $categoria = trim($_POST['txtCat']);
+    $update = "UPDATE transaction SET value = '$valor', description = '$descricao', date = '$data'";
+
+    $query = mysqli_query($conn, $update);
+
+    header('Location: index.php');
+    exit();
+
 }
 
 ?>
