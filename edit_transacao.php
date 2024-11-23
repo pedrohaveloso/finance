@@ -46,7 +46,6 @@ $categorias = mysqli_fetch_all($query, MYSQLI_ASSOC);
                         </h4>
                     </div>
                     <div class="card-body jusfify-content-center">
-                        <?php if($transacao): ?>
                         <form action="index.php" class="text-center" method="POST">
                             <input type="hidden" name="idTransação" value="<?=$transacao['id']?>">
                             <div class="mb-3">
@@ -78,8 +77,7 @@ $categorias = mysqli_fetch_all($query, MYSQLI_ASSOC);
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-primary">Salvar</button>
-                        </form>
-                        <?php endif; ?>  
+                        </form>  
                     </div>
                 </div>
             </div>
