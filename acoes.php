@@ -70,18 +70,32 @@ if (isset($_POST['create_category'])){
     exit();
 }
 
-if (isset($_POST['edit_category'])){
-    $valor = trim($_POST['txtValor']);
-    $descricao = trim($_POST['txtDescricao']);
-    $data = trim($_POST['txtData']);
-    $categoria = trim($_POST['txtCat']);
-    $update = "UPDATE transaction SET value = '$valor', description = '$descricao', date = '$data'";
+if (isset($_POST['edit_transacao'])) {
+    $transacaoId = mysqli_real_escape_string($conn, $_POST['idTransacao']);
+    $tipo = mysqli_real_escape_string($conn, $_POST['txtType']);
+    $valor = mysqli_real_escape_string($conn, $_POST['txtValor']);
+    $descricao = mysqli_real_escape_string($conn, $_POST['txtDescricao']);
+    $data = mysqli_real_escape_string($conn, $_POST['txtData']);
+    $categoriaId = mysqli_real_escape_string($conn, $_POST['txtCat']);
 
+    $update = "UPDATE transaction SET type = '$tipo', value = '$valor', description = '$descricao', date = '$data' WHERE id = '$transacaoId'";
     $query = mysqli_query($conn, $update);
+
+    if ($query) {
+        $category = "SELECT id FROM transactioncategory WHERE transaction_id = '$transacaoId'";
+        $result = mysqli_query($conn, $category);
+
+        if (mysqli_num_rows($result) > 0) {
+            $attCategory = "UPDATE transactioncategory SET category_id = '$categoriaId' WHERE transaction_id = '$transacaoId'";
+            mysqli_query($conn, $attCategory);
+        } else {
+            $insertCategory = "INSERT INTO transactioncategory (transaction_id, category_id) VALUES ('$transacaoId', '$categoriaId')";
+            mysqli_query($conn, $insertCategory);
+        }
+    }
+}
 
     header('Location: index.php');
     exit();
-
-}
 
 ?>
