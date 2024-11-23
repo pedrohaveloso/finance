@@ -22,33 +22,21 @@ $meses = mysqli_query($conn, $sql_meses);
 </head>
 
 <body>
-    <div class="container-">
-        <div class="row">
-            <div class="col-bg-7">
-                <div class="card text-center">
-                    <h1>
-                        Finance Control
-                    </h1>
-                    <div class="btn-group justify-content-center" style="width: 100%;">
-                        <div class="dropdown">
-                            <button class="btn btn-success dropdown-toggle text-white" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Adicionar</button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="add_mes.php">Mês</a></li>
-                                <li><a class="dropdown-item" href="add_cat.php">Categoria</a></li>
-                            </ul>
-                        </div>
-                        <div class="dropdown">
-                            <button class="btn btn-warning dropdown-toggle text-white" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Filtrar</button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#"> por Mês</a></li>
-                                <li><a class="dropdown-item" href="#">por Categoria</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+    <nav class="navbar navbar-expand-lg bg-dark text-white">
+        <div class="container-fluid d-flex align-items-center">
+            <h2 class="mb-0 fw-bold">
+                Finance Control 
+                <i class="bi bi-wallet-fill"></i>
+            </h2>
+            <div>
+                <a class="btn bg-light fw-bold" href="add_mes.php"><i class="bi bi-plus-circle"></i> Mês</a>
+                <a class="btn bg-light fw-bold  " href="add_cat.php"><i class="bi bi-plus-circle"></i> Categoria</a>  
             </div>
+            
         </div>
-    </div>
+    </nav>
+
+
 
     <?php foreach ($meses as $mes): ?>
         <?php
@@ -113,7 +101,7 @@ $meses = mysqli_query($conn, $sql_meses);
                                     $categoria = mysqli_fetch_assoc($consulta_categoria);
                                     ?>
                                     <td class="d-flex justify-content-center gap-3">
-                                        <a href="edit_transacao.php/id=<?= $transacao['id'] ?>" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                                        <a href="edit_transacao.php?id=<?= $transacao['id'] ?>" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
                                         <form action="acoes.php" method="POST">
                                             <button onclick="return confirm('Tem certeza que deseja excluir esta transação?')" name="delete_transacao" class="btn btn-danger" type="submit" value="<?= $transacao['id'] ?>"><i class="bi bi-file-earmark-minus"></i></button>
                                         </form>

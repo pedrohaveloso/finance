@@ -23,6 +23,8 @@ $transacao = mysqli_fetch_assoc($query);
 $sql = "SELECT * FROM category ORDER BY name";
 $query = mysqli_query($conn, $sql);
 $categorias = mysqli_fetch_all($query, MYSQLI_ASSOC);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +48,6 @@ $categorias = mysqli_fetch_all($query, MYSQLI_ASSOC);
                         </h4>
                     </div>
                     <div class="card-body jusfify-content-center">
-                        <?php if($transacao): ?>
                         <form action="index.php" class="text-center" method="POST">
                             <input type="hidden" name="idTransação" value="<?=$transacao['id']?>">
                             <div class="mb-3">
@@ -55,6 +56,7 @@ $categorias = mysqli_fetch_all($query, MYSQLI_ASSOC);
                                     <option value=""></option>
                                     <option value="entrada">Entrada</option>
                                     <option value="saida">Saída</option>
+                                    
                                 </select>
                             </div>
                             <div class="mb-3">
@@ -77,9 +79,9 @@ $categorias = mysqli_fetch_all($query, MYSQLI_ASSOC);
                                     <?php endforeach; ?>
                                 </select>
                             </div>
-                            <button type="submit" class="btn btn-primary">Salvar</button>
-                        </form>
-                        <?php endif; ?>  
+                            <button name = "edit_category" type="submit" class="btn btn-primary">Salvar</button>
+                            <input name = "edit_category" value='#' type="hidden">
+                        </form>  
                     </div>
                 </div>
             </div>
