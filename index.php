@@ -41,9 +41,13 @@ $meses = mysqli_query($conn, $sql_meses);
         $mes_id = $mes['id'];
         $sql_transacoes = "SELECT id,date, type, description, value FROM transaction WHERE month_id = '$mes_id'";
         $transacoes = mysqli_query($conn, $sql_transacoes);
-        $sql_soma = "SELECT SUM(value) AS total FROM transaction";
-        $soma = $conn->query($sql_soma);
-        $somaMes = $soma->fetch_assoc();
+        $sql_entrada = "SELECT SUM(value) AS total FROM transaction WHERE type = 'input'";
+        $entrada = $conn->query($sql_entrada);
+        $input = $entrada->fetch_assoc();
+        $sql_saida = "SELECT SUM(value) AS total FROM transaction WHERE type = 'output'";
+        $saida = $conn->query($sql_saida);
+        $output = $saida->fetch_assoc();
+        
 
         ?>
         <details>
@@ -59,8 +63,15 @@ $meses = mysqli_query($conn, $sql_meses);
                         <button onclick="return confirm('Tem certeza que deseja excluir este mês?')" name="delete_mes" class="btn btn-danger" type="submit" value="<?= $mes['id'] ?>">Deletar Mês</button>
                     </form>
                     <div class="card mt-3 mb-4">
+                        <div class="card-header">
+                            <p>Resumo Mensal</p>
+                        </div>
                         <div class="card-body">
-                            Resumo Mensal
+                            <div class="card"><p><?php echo "ENTRADAS:" . $input['total']; ?></p> </div>
+                            <div class="card"><p><?php echo "SAÍDAS:" . $output['total']; ?></p> </div>
+                        </div>
+
+                            
                         </div>
                     </div>
                     <div class="card mt-3 mb-3">

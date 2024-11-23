@@ -10,11 +10,6 @@ if (isset($_POST['create_transacao'])){
     $id_mes= trim($_POST['idMes']);
     $categoria = trim($_POST['txtCat']);
 
-    if($tipo == 'input' || 'output')
-    {
-        $valor = $valor * (1);
-
-    }
 
     $sql="INSERT INTO transaction (date, type, description, value, month_id) VALUES ('$data', '$tipo', '$descricao', '$valor', '$id_mes')";
     $sqlinsert = mysqli_query($conn,$sql);
