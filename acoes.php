@@ -47,7 +47,16 @@ if (isset($_POST['delete_mes'])){
 
     header('Location: index.php');
     exit();
-}  
+}
+
+if (isset($_POST['delete_categoria'])){
+    $category_id = mysqli_real_escape_string($conn, ($_POST['delete_categoria']));
+    $sqlDeleteCategory = "DELETE FROM category WHERE id ='$category_id'";
+
+    mysqli_query($conn, $sqlDeleteCategory);
+    header('Location: crud_cat.php');
+    exit();
+}
 
 if (isset($_POST['create_mes'])){
     $mes = trim($_POST['txtMes']);
@@ -93,6 +102,15 @@ if (isset($_POST['edit_transacao'])) {
             mysqli_query($conn, $insertCategory);
         }
     }
+}
+if (isset($_POST['edit_categoria'])){
+    $categoria_id = mysqli_real_escape_string($conn, $_POST['idCategoria']);
+    $nome = mysqli_real_escape_string($conn, $_POST['txtNome']);
+    $sql = "UPDATE category SET name = '$nome' WHERE id = '$categoria_id'";
+    $query = mysqli_query($conn, $sql);
+    
+    header('Location: crud_cat.php');
+    exit();
 }
 
     header('Location: index.php');

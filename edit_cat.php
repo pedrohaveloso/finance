@@ -1,16 +1,23 @@
 <?php
+session_start();
+require_once("conexao.php");
+
+$categoria_id = mysqli_real_escape_string($conn, $_GET['category_id']);
+$sql = "SELECT name FROM category WHERE id = '$categoria_id'";
+$query = mysqli_query($conn, $sql);
+$categoria = mysqli_fetch_assoc($query);
 
 ?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionar Mês</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Editar Categoria</title>
 </head>
+<body>
 <nav class="navbar navbar-expand-lg bg-dark text-white">
         <div class="container-fluid d-flex align-items-center">
             <h2 class="mb-0 fw-bold">
@@ -27,51 +34,40 @@
             
         </div>
 </nav>
-<body>
-        <div class="container mt-5">
+    <div class="container mt-3">
         <div class="row justify-content-center">
             <div class="col-sm-7">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="text-center">
-                            Adicionar Mês
-                            <a href="index.php" class="btn btn-danger float-start"><i class="bi bi-arrow-return-left"></i></a>
+                        <h4>
+                        Editando Categoria    
+                        <i class="bi bi-bookmark-star"></i>
                         </h4>
-                        
                     </div>
                     <div class="card-body">
                         <form action="acoes.php" method="POST">
-                                <label for="txtMes">Selecione um Mês</label>
-                                        <select class="form-select" name="txtMes">
-                                            <option value="January"><p>Janeiro</p></option>
-                                            <option value="February"><p>Fevereiro</p></option>
-                                            <option value="March"><p>Março</p></option>
-                                            <option value="April"><p>Abril</p></option>
-                                            <option value="May"><p>Maio</p></option>
-                                            <option value="June"><p>Junho</p></option>
-                                            <option value="July"><p>Julho</p></option>
-                                            <option value="August"><p>Agosto</p></option>
-                                            <option value="September"><p>Setembro</p></option>
-                                            <option value="October"><p>Outubro</p></option>
-                                            <option value="November"><p>Novembro</p></option>
-                                            <option value="December"><p>Dezembro</p></option>
-                                        </select>
-
                             <div class="mb-3">
-                                <label for="txtAno">Ano</label>
-                                <input type="number" class="form-control" name="txtAno">
+                                <label for="txtNome">Nome</label>
+                                <input type="text" name="txtNome" class="form-control" value="<?= $categoria['name'];?>">
                             </div>
-
-                            <div class="mb-3">
-                                <button name="create_mes" type="submit" class="btn btn-success float-end"><i class="bi bi-floppy2-fill">  Salvar</i></button>
-                            </div>
+                            <input type="hidden" name="idCategoria" value="<?= $categoria_id?>">
+                            <button name="edit_categoria" type="submit" class="btn btn-success float-end"><i class="bi bi-floppy2-fill">  Salvar</i></button>
                         </form>
+                        <a href="crud_cat.php" class="btn btn-danger">Voltar</a>
                     </div>
+                    
                 </div>
             </div>
         </div>
     </div>
-        
+    
+
+
+
+
+
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

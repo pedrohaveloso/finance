@@ -40,19 +40,22 @@ $categorias = mysqli_fetch_all($query, MYSQLI_ASSOC);
     <title>Editar - Transação</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-dark text-white">
+<nav class="navbar navbar-expand-lg bg-dark text-white">
         <div class="container-fluid d-flex align-items-center">
             <h2 class="mb-0 fw-bold">
-                Controle Financeiro 
+                Finance Control 
                 <i class="bi bi-wallet-fill"></i>
             </h2>
             <div>
-                <a class="btn bg-light fw-bold" href="index.php"><i class="bi bi-house"></i> Início</a>
+            <a class="btn bg-light fw-bold" href="index.php"><i class="bi bi-house"></i> Ínicio</a>
                 <a class="btn bg-light fw-bold" href="add_mes.php"><i class="bi bi-plus-circle"></i> Mês</a>
-                <a class="btn bg-light fw-bold" href="add_cat.php"><i class="bi bi-plus-circle"></i> Categoria</a>  
+                <a class="btn bg-light fw-bold  " href="add_cat.php"><i class="bi bi-plus-circle"></i> Categoria</a>  
+                <a class="btn bg-light fw-bold" href="crud_cat.php"><i class="bi bi-bookmark-star"></i></a>
+                <a class="btn bg-light fw-bold" href="crud_mes.php"><i class="bi bi-calendar"></i></a>
             </div>
+            
         </div>
-    </nav>
+</nav>
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-sm-7">
@@ -93,7 +96,7 @@ $categorias = mysqli_fetch_all($query, MYSQLI_ASSOC);
                                     <?php endforeach; ?>
                                 </select>
                             </div>
-                            <button name="edit_transacao" type="submit" class="btn btn-primary">Salvar</button>
+                            <button name="edit_transacao" type="submit" class="btn btn-success float-end"><i class="bi bi-floppy2-fill">  Salvar</i></button>
                         </form>  
                     </div>
                 </div>

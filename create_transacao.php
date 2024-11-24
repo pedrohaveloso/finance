@@ -27,10 +27,12 @@ $categorias = mysqli_query($conn, $sql);
             <a class="btn bg-light fw-bold" href="index.php"><i class="bi bi-house"></i> Ínicio</a>
                 <a class="btn bg-light fw-bold" href="add_mes.php"><i class="bi bi-plus-circle"></i> Mês</a>
                 <a class="btn bg-light fw-bold  " href="add_cat.php"><i class="bi bi-plus-circle"></i> Categoria</a>  
+                <a class="btn bg-light fw-bold" href="crud_cat.php"><i class="bi bi-bookmark-star"></i></a>
+                <a class="btn bg-light fw-bold" href="crud_mes.php"><i class="bi bi-calendar"></i></a>
             </div>
             
         </div>
-    </nav>
+</nav>
 <body>
     <div class="container mt-3">
         <div class="row justify-content-center">
@@ -78,7 +80,7 @@ $categorias = mysqli_query($conn, $sql);
                             </div>
                             <div class="mb-3">
                                 <a href="index.php" class="btn btn-danger">Voltar</a>    
-                                <button type="submit" id="create_transacao" name="create_transacao" class="btn btn-success float-end">Enviar</button>
+                                <button name="create_transacao" type="submit" class="btn btn-success float-end"><i class="bi bi-credit-card-2-back"></i>  Criar</i></button>
                             </div>
                         </form>
                     </div>
