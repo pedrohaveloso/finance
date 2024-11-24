@@ -19,6 +19,9 @@ if (isset($_POST['create_transacao'])){
     $sql_category = "INSERT INTO transactioncategory (transaction_id, category_id) VALUES ('$id_transacao',$categoria)";
     $insert_category = mysqli_query($conn,$sql_category);
 
+    $_SESSION['message'] = "Transação adicionada com sucesso!";
+    $_SESSION['type'] = 'success';
+
     header('Location: index.php');
     exit();
 }
@@ -52,8 +55,11 @@ if (isset($_POST['delete_mes'])){
 if (isset($_POST['delete_categoria'])){
     $category_id = mysqli_real_escape_string($conn, ($_POST['delete_categoria']));
     $sqlDeleteCategory = "DELETE FROM category WHERE id ='$category_id'";
-
     mysqli_query($conn, $sqlDeleteCategory);
+
+  
+
+
     header('Location: crud_cat.php');
     exit();
 }
@@ -65,6 +71,9 @@ if (isset($_POST['create_mes'])){
     $sql = "INSERT INTO month (name, year) VALUES ('$mes', '$ano')";
     $sqlinsert = mysqli_query($conn,$sql);
 
+    $_SESSION['message'] = "Mês criado com sucesso!";
+    $_SESSION['type'] = 'success';
+
     header('Location: index.php');
     exit();
 
@@ -74,6 +83,9 @@ if (isset($_POST['create_category'])){
     $nome = trim($_POST['txtNome']);
     $sql_insert = "INSERT INTO category (name) VALUES ('$nome')";
     $insert = mysqli_query($conn, $sql_insert);
+
+    $_SESSION['message'] = "Categoria criada com sucesso!";
+    $_SESSION['type'] = 'success';
     
     header('Location: index.php');
     exit();
