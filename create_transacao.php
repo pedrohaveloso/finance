@@ -86,8 +86,15 @@ $categorias = mysqli_query($conn, $sql);
                                 <input type="number" id="txtValorNovaTransacao" name="txtValorNovaTransacao" class="form-control">
                             </div>
                             <div class="mb-3">
-                                <input type="hidden" name="idMes" value="<?php echo $_GET['mes_id'] ?>">
+                                <input type="hidden" name="idMes" value="<?php echo $_GET['mes_id']; ?>">
                             </div>
+
+                            <?php 
+                                if (isset($_SESSION['message'])) {
+                                    echo "<p style='color: red;'>TODOS OS CAMPOS SÃO OBRIGATÓRIOS</p>";
+                                }
+                            ?>
+
                             <div class="mb-3">
                                 <a href="index.php" class="btn btn-danger">Voltar</a>    
                                 <button name="create_transacao" type="submit" class="btn btn-success float-end"><i class="bi bi-credit-card-2-back"></i>  Criar</i></button>

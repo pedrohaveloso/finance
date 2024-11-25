@@ -2,37 +2,33 @@
 session_start();
 require_once("conexao.php");
 
-if (isset($_POST['create_transacao'])){
+if (isset($_POST['create_transacao'])) {
     $data = trim($_POST['txtDataNovaTransacao']);
     $tipo = trim($_POST['txtTipo']);
     $descricao = trim($_POST['txtDescricaoNovaTransacao']);
     $valor = trim($_POST['txtValorNovaTransacao']);
-    $id_mes= trim($_POST['idMes']);
+    $id_mes = trim($_POST['idMes']);
     $categoria = trim($_POST['txtCat']);
 
-    if (empty($data) || empty($tipo) || empty($descricao) || empty($valor) || empty($id_mes) || empty($categoria)) {
-        $_SESSION['message'] = "Todos os campos são obrigatórios!";
-        $_SESSION['type'] = 'error';
-        header('Location: create_transacao.php');
-        exit();
-    }
+    
+    
 
-
-    $sql="INSERT INTO transaction (date, type, description, value, month_id) VALUES ('$data', '$tipo', '$descricao', '$valor', '$id_mes')";
-    $sqlinsert = mysqli_query($conn,$sql);
+    
+    $sql = "INSERT INTO transaction (date, type, description, value, month_id) VALUES ('$data', '$tipo', '$descricao', '$valor', '$id_mes')";
+    $sqlinsert = mysqli_query($conn, $sql);
 
     $id_transacao = mysqli_insert_id($conn);
 
-    $sql_category = "INSERT INTO transactioncategory (transaction_id, category_id) VALUES ('$id_transacao',$categoria)";
-    $insert_category = mysqli_query($conn,$sql_category);
+    $sql_category = "INSERT INTO transactioncategory (transaction_id, category_id) VALUES ('$id_transacao', '$categoria')";
+    $insert_category = mysqli_query($conn, $sql_category);
 
+    
     $_SESSION['message'] = "Transação adicionada com sucesso!";
     $_SESSION['type'] = 'success';
 
     header('Location: index.php');
     exit();
 }
-
 if (isset($_POST['delete_transacao'])){
     $transacaoId = mysqli_real_escape_string($conn,($_POST['delete_transacao']));
     $sqlDeleteCategory = "DELETE FROM transactioncategory  WHERE transaction_id = '$transacaoId'";
