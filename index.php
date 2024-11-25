@@ -70,7 +70,7 @@ $meses = mysqli_query($conn, $sql_meses);
 
             <div class="container border border-4 rounded-2 mb-5">
                 <div class="container">
-                    <h3 class="mt-3"><?php echo $months[$mes['name']] . " " . $mes['year']; ?></h3>
+                    <h3 class="mt-3"><i class="bi bi-calendar3"></i> <?php echo$months[$mes['name']] . " " . $mes['year']; ?></h3>
                     <a href="create_transacao.php?mes_id=<?= $mes['id'] ?>" class="btn btn-primary">Nova transação</a>
                     <form action="acoes.php" method="POST" class="float-end">
                         <button onclick="return confirm('Tem certeza que deseja excluir este mês?')" name="delete_mes" class="btn btn-danger" type="submit" value="<?= $mes['id'] ?>">Deletar Mês</button>
@@ -95,14 +95,14 @@ $meses = mysqli_query($conn, $sql_meses);
                                     <h5 class="text-success fw-bold"><?php echo "Entradas : R$ " . $input['total']; ?></h5>
                                 </div>
                                 <div class="card text-center" style="background-color: rgb(255,153,153);">
-                                    <h5 class="text-white fw-bold"><?php echo "Saídas : R$ " . $output['total']; ?></h5>
+                                    <h5 class="text-danger fw-bold"><?php echo "Saídas : R$ " . $output['total']; ?></h5>
                                 </div>
                             </div>
                             
                         </div>
                         <?php
                             if ($resultadoMes < 0): ?>
-                            <div class="card-group mt-2 text-center p-1">
+                            <div class="card-group mt-1 text-center p-1">
                                     <div class="card bg-danger bg-opacity-10 text-light">
                                         <h4>
                                             Seu saldo é negativo
@@ -112,7 +112,7 @@ $meses = mysqli_query($conn, $sql_meses);
                                 
 
                             <?php elseif ($resultadoMes > 1): ?>
-                                <div class="card-group mt-3 text-center p-1">
+                                <div class="card-group mt-1 text-center p-1">
                                     <div class="card bg-success text-light">
                                         <h4>
                                             Seu saldo é positivo
@@ -120,7 +120,7 @@ $meses = mysqli_query($conn, $sql_meses);
                                     </div>
                                 </div>
                             <?php elseif ($resultadoMes == 0): ?>
-                                <div class="card-group mt-3 text-center p-1">
+                                <div class="card-group mt-1 text-center p-1">
                                     <div class="card bg-warning text-light">
                                         <h4>
                                             Seu saldo é neutro
