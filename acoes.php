@@ -11,7 +11,12 @@ if (isset($_POST['create_transacao'])) {
     $categoria = trim($_POST['txtCat']);
 
     
-    
+    if (empty($data) || empty($tipo) || empty($descricao) || empty($valor) || empty($id_mes) || empty($categoria)) {
+        $_SESSION['message'] = "Todos os campos são obrigatórios!";
+        $_SESSION['type'] = 'error';
+        header('Location: create_transacao.php');
+        exit();
+    }
 
     
     $sql = "INSERT INTO transaction (date, type, description, value, month_id) VALUES ('$data', '$tipo', '$descricao', '$valor', '$id_mes')";
