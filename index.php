@@ -68,7 +68,7 @@ $meses = mysqli_query($conn, $sql_meses);
                 <h3 class="mt-3 text-center"><?php echo $mes['name'] . " " . $mes['year']; ?></h3>
             </summary>
 
-            <div class="container border border-4 rounded-2 mb-5 p-">
+            <div class="container border border-4 rounded-2 mb-5">
                 <div class="container">
                     <h3 class="mt-3"><?php echo $months[$mes['name']] . " " . $mes['year']; ?></h3>
                     <a href="create_transacao.php?mes_id=<?= $mes['id'] ?>" class="btn btn-primary">Nova transação</a>
@@ -76,11 +76,11 @@ $meses = mysqli_query($conn, $sql_meses);
                         <button onclick="return confirm('Tem certeza que deseja excluir este mês?')" name="delete_mes" class="btn btn-danger" type="submit" value="<?= $mes['id'] ?>">Deletar Mês</button>
                     </form>
                     <div class="card mt-3 mb-4">
-                        <div class="card-header text-center fw-bold fs-4">
-                            <p>Resumo Mensal</p>
+                        <div class="card-header text-center fw-bold fs-4 p-0">
+                            <p>Resumo Mensal</p>    
                         </div>
-                        <div class="card-body fw-4 p-1">
-                            <div class="card-group mt-2 mb-2">
+                        <div class="card-body fw-4 p-1  d-flex justify-content-center align-items-center">
+                            <div class="card-group mt-2 mb-1 w-50 ">
                                 <?php
                                 $resultadoMes = ($input['total'] - $output['total']);
                                 if ($resultadoMes > 0) {
@@ -91,32 +91,48 @@ $meses = mysqli_query($conn, $sql_meses);
                                     $txtColor = "text-white";
                                 }
                                 ?>
-                                <div class="card text-center fw-bold" style="background-color: rgb(204,255,204); ">
-                                    <h5 class="text-white"><?php echo "Entradas : " . $input['total']; ?></h5>
+                                <div class="card text-center" style="background-color: rgb(204,255,204); ">
+                                    <h5 class="text-success fw-bold"><?php echo "Entradas : R$ " . $input['total']; ?></h5>
                                 </div>
-                                <div class="card text-center fw-bold" style="background-color: rgb(255,153,153);">
-                                    <h5 class="text-white"><?php echo "Saídas : " . $output['total']; ?></h5>
-                                </div>
-                            </div>
-                            <div class="card-group mt-3 text-center p-1">
-                                <div class="card">
-                                <h4>
-                                <?php
-                                    if ($resultadoMes < 0): ?>
-                                        Seu saldo é negativo
-                                    <?php elseif ($resultadoMes > 1): ?>
-                                        Seu saldo é positivo
-                                    <?php elseif ($resultadoMes == 0): ?>
-                                        Seu saldo é neutro
-                                    <?php endif ?>
-                                </h4>
+                                <div class="card text-center" style="background-color: rgb(255,153,153);">
+                                    <h5 class="text-white fw-bold"><?php echo "Saídas : R$ " . $output['total']; ?></h5>
                                 </div>
                             </div>
+                            
+                        </div>
+                        <?php
+                            if ($resultadoMes < 0): ?>
+                            <div class="card-group mt-2 text-center p-1">
+                                    <div class="card bg-danger bg-opacity-10 text-light">
+                                        <h4>
+                                            Seu saldo é negativo
+                                        </h4>
+                                    </div>
+                                </div>
+                                
+
+                            <?php elseif ($resultadoMes > 1): ?>
+                                <div class="card-group mt-3 text-center p-1">
+                                    <div class="card bg-success text-light">
+                                        <h4>
+                                            Seu saldo é positivo
+                                        </h4>
+                                    </div>
+                                </div>
+                            <?php elseif ($resultadoMes == 0): ?>
+                                <div class="card-group mt-3 text-center p-1">
+                                    <div class="card bg-warning text-light">
+                                        <h4>
+                                            Seu saldo é neutro
+                                        </h4>
+                                    </div>
+                                </div>
+                            <?php endif ?>
+
                             <div class="text-center mt-3 mb-3">
                                 <h2 class="fw-bold"><i class="bi bi-coin"></i> Saldo atual : </h2>
                                 <h3><?php echo $resultadoMes ?></h3>
                             </div>
-                        </div>
 
 
                     </div>
