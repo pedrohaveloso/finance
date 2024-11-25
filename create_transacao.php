@@ -86,7 +86,7 @@ $categorias = mysqli_query($conn, $sql);
                                 <input type="number" id="txtValorNovaTransacao" name="txtValorNovaTransacao" class="form-control">
                             </div>
                             <div class="mb-3">
-                                <input type="hidden" name="idMes" value="<?php echo $_GET['mes_id']?>">
+                                <input type="hidden" name="idMes" value="<?php echo $_GET['mes_id'] ?>">
                             </div>
                             <div class="mb-3">
                                 <a href="index.php" class="btn btn-danger">Voltar</a>    

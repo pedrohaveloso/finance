@@ -10,6 +10,13 @@ if (isset($_POST['create_transacao'])){
     $id_mes= trim($_POST['idMes']);
     $categoria = trim($_POST['txtCat']);
 
+    if (empty($data) || empty($tipo) || empty($descricao) || empty($valor) || empty($id_mes) || empty($categoria)) {
+        $_SESSION['message'] = "Todos os campos são obrigatórios!";
+        $_SESSION['type'] = 'error';
+        header('Location: create_transacao.php');
+        exit();
+    }
+
 
     $sql="INSERT INTO transaction (date, type, description, value, month_id) VALUES ('$data', '$tipo', '$descricao', '$valor', '$id_mes')";
     $sqlinsert = mysqli_query($conn,$sql);
@@ -122,16 +129,6 @@ if (isset($_POST['edit_categoria'])){
     $query = mysqli_query($conn, $sql);
     
     header('Location: crud_cat.php');
-    exit();
-}
-if (isset($_POST['edit_mes'])){
-    $id_mes = mysqli_real_escape_string($conn, $_POST['mes_id']);
-    $nome = trim($_POST['txtMes']);
-    $ano = trim($_POST['txtAno']);
-    $sql = "UPDATE month SET name = '$nome', year = '$ano' WHERE id = '$id_mes' ";
-    $query = mysqli_query($conn, $sql);
-
-    header('Location: index.php');
     exit();
 }
 
