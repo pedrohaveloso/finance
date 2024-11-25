@@ -71,7 +71,7 @@ $categorias = mysqli_fetch_all($query, MYSQLI_ASSOC);
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-sm-7">
-                <div class="card">
+                <div class="card shadow rounded">
                     <div class="card-header">
                         <h4 class="text-center">
                             Editando Transação

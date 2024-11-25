@@ -38,10 +38,10 @@ session_start();
         </div>
 </nav>
 <body>
-        <div class="container mt-5">
+        <div class="container mt-5 ">
         <div class="row justify-content-center">
             <div class="col-sm-7">
-                <div class="card">
+                <div class="card shadow rounded">
                     <div class="card-header">
                         <h4 class="text-center">
                             Adicionar Mês
