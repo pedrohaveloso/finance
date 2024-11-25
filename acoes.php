@@ -2,6 +2,7 @@
 session_start();
 require_once("conexao.php");
 
+
 if (isset($_POST['create_transacao'])) {
     $data = trim($_POST['txtDataNovaTransacao']);
     $tipo = trim($_POST['txtTipo']);
@@ -9,6 +10,7 @@ if (isset($_POST['create_transacao'])) {
     $valor = trim($_POST['txtValorNovaTransacao']);
     $id_mes = trim($_POST['idMes']);
     $categoria = trim($_POST['txtCat']);
+    
 
     
     if (empty($data) || empty($tipo) || empty($descricao) || empty($valor) || empty($id_mes) || empty($categoria)) {
@@ -28,8 +30,7 @@ if (isset($_POST['create_transacao'])) {
     $insert_category = mysqli_query($conn, $sql_category);
 
     
-    $_SESSION['message'] = "Transação adicionada com sucesso!";
-    $_SESSION['type'] = 'success';
+    
 
     header('Location: index.php');
     exit();

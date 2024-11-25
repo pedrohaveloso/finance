@@ -5,6 +5,7 @@ require_once("constantes.php");
 
 $sql = "SELECT * FROM category";
 $categorias = mysqli_query($conn, $sql);
+
 ?>
 
 
@@ -91,7 +92,7 @@ $categorias = mysqli_query($conn, $sql);
 
                             <?php 
                                 if (isset($_SESSION['message'])) {
-                                    echo "<p style='color: red;'>TODOS OS CAMPOS SÃO OBRIGATÓRIOS</p>";
+                                    echo "<div class='alert alert-danger'>TODOS OS CAMPOS SÃO OBRIGATÓRIOS</div>";
                                 }
                             ?>
 
