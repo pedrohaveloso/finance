@@ -102,10 +102,11 @@ $mesId = $Mes->fetch_assoc();
 
                             <?php 
                                 if (isset($_SESSION['message'])) {
-                                    echo "<div class='alert alert-danger'>{$_SESSION['message']}</div>";
+                                    echo "<div class='alert alert-danger p-1 col-12 col-md-6 mx-auto text-center'>{$_SESSION['message']}</div>";
                                 }
-                                unset($_SESSION['message']);
-                            ?>
+                                    unset($_SESSION['message']);
+                                ?>
+
 
                             <div class="mb-3">
                                 <a href="index.php" class="btn btn-danger">Voltar</a>    

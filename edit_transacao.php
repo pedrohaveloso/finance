@@ -112,7 +112,7 @@ $categorias = mysqli_fetch_all($query, MYSQLI_ASSOC);
                             <input type="hidden" value="1" name="edit_transacao">
                             <?php 
                                 if (isset($_SESSION['message'])) {
-                                    echo "<div class='alert alert-danger'>{$_SESSION['message']}</div>";
+                                    echo "<div class='alert alert-danger p-1 col-12 col-md-6 mx-auto text-center'>{$_SESSION['message']}</div>";
                                 }
                                 unset($_SESSION['message']);
                                 ?>

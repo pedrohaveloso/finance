@@ -52,7 +52,7 @@ $categoria = mysqli_fetch_assoc($query);
                             </div>
                             <?php 
                                 if (isset($_SESSION['message'])) {
-                                    echo "<div class='alert alert-danger'>{$_SESSION['message']}</div>";
+                                    echo "<div class='alert alert-danger p-1 col-12 col-md-6 mx-auto text-center'>{$_SESSION['message']}</div>";
                                 }
                                 unset($_SESSION['message']);
                             ?>
