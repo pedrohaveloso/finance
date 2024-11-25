@@ -68,7 +68,7 @@ $meses = mysqli_query($conn, $sql_meses);
                 <h3 class="mt-3 text-center"><?php echo $mes['name'] . " " . $mes['year']; ?></h3>
             </summary>
 
-            <div class="container border border-dark mb-5">
+            <div class="container border border-4 rounded-2 mb-5 p-">
                 <div class="container">
                     <h3 class="mt-3"><?php echo $months[$mes['name']] . " " . $mes['year']; ?></h3>
                     <a href="create_transacao.php?mes_id=<?= $mes['id'] ?>" class="btn btn-primary">Nova transação</a>
@@ -76,11 +76,11 @@ $meses = mysqli_query($conn, $sql_meses);
                         <button onclick="return confirm('Tem certeza que deseja excluir este mês?')" name="delete_mes" class="btn btn-danger" type="submit" value="<?= $mes['id'] ?>">Deletar Mês</button>
                     </form>
                     <div class="card mt-3 mb-4">
-                        <div class="card-header">
+                        <div class="card-header text-center fw-bold fs-4">
                             <p>Resumo Mensal</p>
                         </div>
-                        <div class="card-body">
-                            <div class="card-group">
+                        <div class="card-body fw-4 p-1">
+                            <div class="card-group mt-2 mb-2">
                                 <?php
                                 $resultadoMes = ($input['total'] - $output['total']);
                                 if ($resultadoMes > 0) {
@@ -92,23 +92,29 @@ $meses = mysqli_query($conn, $sql_meses);
                                 }
                                 ?>
                                 <div class="card text-center fw-bold" style="background-color: rgb(204,255,204); ">
-                                    <p class="text-white"><?php echo "Entradas : " . $input['total']; ?></p>
+                                    <h5 class="text-white"><?php echo "Entradas : " . $input['total']; ?></h5>
                                 </div>
                                 <div class="card text-center fw-bold" style="background-color: rgb(255,153,153);">
-                                    <p class="text-white"><?php echo "Saídas : " . $output['total']; ?></p>
+                                    <h5 class="text-white"><?php echo "Saídas : " . $output['total']; ?></h5>
                                 </div>
-                                <div class="card text-center fw-bold <?php echo $txtColor; ?>" style="background-color: rgb(204,229,255);">
-                                    <p>
-                                        <?php
-                                        if ($resultadoMes < 0): ?>
-                                            Seu saldo é negativo
-                                        <?php elseif ($resultadoMes > 1): ?>
-                                            Seu saldo é positivo
-                                        <?php elseif ($resultadoMes == 0): ?>
-                                            Seu saldo é neutro
-                                        <?php endif ?>
-                                    </p>
+                            </div>
+                            <div class="card-group mt-3 text-center p-1">
+                                <div class="card">
+                                <h4>
+                                <?php
+                                    if ($resultadoMes < 0): ?>
+                                        Seu saldo é negativo
+                                    <?php elseif ($resultadoMes > 1): ?>
+                                        Seu saldo é positivo
+                                    <?php elseif ($resultadoMes == 0): ?>
+                                        Seu saldo é neutro
+                                    <?php endif ?>
+                                </h4>
                                 </div>
+                            </div>
+                            <div class="text-center mt-3 mb-3">
+                                <h2 class="fw-bold"><i class="bi bi-coin"></i> Saldo atual : </h2>
+                                <h3><?php echo $resultadoMes ?></h3>
                             </div>
                         </div>
 
@@ -147,7 +153,7 @@ $meses = mysqli_query($conn, $sql_meses);
                                 </td>
 
                                 <th scope="row"><?php echo $types[$transacao['type']]; ?></th>
-                                <td><?php echo $transacao['value']; ?></td>
+                                <td><?php echo 'R$ ' . $transacao['value']; ?></td>
                                 <td><?php echo $transacao['description']; ?></td>
                                 <td><?php echo $transacao['date']; ?></td>
                                 <td><?php if ($categoria) {
