@@ -20,6 +20,8 @@ if (isset($_POST['create_transacao'])) {
         exit();
     }
 
+   
+
     
     $sql = "INSERT INTO transaction (date, type, description, value, month_id) VALUES ('$data', '$tipo', '$descricao', '$valor', '$id_mes')";
     $sqlinsert = mysqli_query($conn, $sql);

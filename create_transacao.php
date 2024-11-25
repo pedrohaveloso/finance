@@ -6,6 +6,14 @@ require_once("constantes.php");
 $sql = "SELECT * FROM category";
 $categorias = mysqli_query($conn, $sql);
 
+
+if (!isset($_GET['mes_id']) || empty($_GET['mes_id'])) {
+    header('Location: index.php');
+    exit();
+}
+
+
+
 ?>
 
 
@@ -75,7 +83,7 @@ $categorias = mysqli_query($conn, $sql);
                                 <select  name="txtCat" class="form-select" aria-label="txtCat">
                                 <?php foreach ($categorias as $categoria): ?>
                                     <option value = "<?=$categoria['id']?>"><?php echo $categoria['name']?> </option>
-                                <?php endforeach?>;
+                                <?php endforeach?>
                                 </select>
                             </div>
                             <div class="mb-3">
