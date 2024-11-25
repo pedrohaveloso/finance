@@ -13,7 +13,9 @@ if (!isset($_GET['mes_id']) || empty($_GET['mes_id'])) {
 }
 
 
-
+$sqlMes="SELECT name FROM month WHERE id = ({$_GET['mes_id']})";
+$Mes = $conn->query($sqlMes);
+$mesId = $Mes->fetch_assoc();
 ?>
 
 
@@ -58,7 +60,7 @@ if (!isset($_GET['mes_id']) || empty($_GET['mes_id'])) {
             <div class="col-sm-7">
                 <div class="card shadow rounded">
                     <div class="card-header">
-                        <h4>Nova Transação</h4>
+                        <h4>Nova Transação em <?php echo $months[$mesId['name']];?></h4>
 
                     </div>
                     <div class="card-body">
