@@ -28,6 +28,8 @@ $sql = "SELECT * FROM category ORDER BY name";
 $query = mysqli_query($conn, $sql);
 $categorias = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
+
+
 ?>
 
 <!DOCTYPE html>
@@ -105,7 +107,15 @@ $categorias = mysqli_fetch_all($query, MYSQLI_ASSOC);
                                         <option value="<?=$categoria['id']?>"><?=$categoria['name']?></option>
                                     <?php endforeach; ?>
                                 </select>
+                                
                             </div>
+                            <input type="hidden" value="1" name="edit_transacao">
+                            <?php 
+                                if (isset($_SESSION['message'])) {
+                                    echo "<div class='alert alert-danger'>{$_SESSION['message']}</div>";
+                                }
+                                unset($_SESSION['message']);
+                                ?>
                             <button name="edit_transacao" type="submit" class="btn btn-success float-end"><i class="bi bi-floppy2-fill">  Salvar</i></button>
                         </form>  
                     </div>

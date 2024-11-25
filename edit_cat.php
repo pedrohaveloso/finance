@@ -50,6 +50,12 @@ $categoria = mysqli_fetch_assoc($query);
                                 <label for="txtNome">Nome</label>
                                 <input type="text" name="txtNome" class="form-control" value="<?= $categoria['name'];?>">
                             </div>
+                            <?php 
+                                if (isset($_SESSION['message'])) {
+                                    echo "<div class='alert alert-danger'>{$_SESSION['message']}</div>";
+                                }
+                                unset($_SESSION['message']);
+                            ?>
                             <input type="hidden" name="idCategoria" value="<?= $categoria_id?>">
                             <button name="edit_categoria" type="submit" class="btn btn-success float-end"><i class="bi bi-floppy2-fill">  Salvar</i></button>
                         </form>
