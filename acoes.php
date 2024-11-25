@@ -124,6 +124,16 @@ if (isset($_POST['edit_categoria'])){
     header('Location: crud_cat.php');
     exit();
 }
+if (isset($_POST['edit_mes'])){
+    $id_mes = mysqli_real_escape_string($conn, $_POST['mes_id']);
+    $nome = trim($_POST['txtMes']);
+    $ano = trim($_POST['txtAno']);
+    $sql = "UPDATE month SET name = '$nome', year = '$ano' WHERE id = '$id_mes' ";
+    $query = mysqli_query($conn, $sql);
+
+    header('Location: index.php');
+    exit();
+}
 
     header('Location: index.php');
     exit();
