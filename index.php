@@ -63,19 +63,20 @@ $meses = mysqli_query($conn, $sql_meses);
 
 
         ?>
+        
         <details>
             <summary>
                 <h3 class="mt-3 text-center"><?php echo $mes['name'] . " " . $mes['year']; ?></h3>
             </summary>
 
-            <div class="container border border-4 rounded-2 mb-5">
+            <div class="container border border-4 rounded-2 mb-5 shadow rounded">
                 <div class="container">
                     <h3 class="mt-3"><i class="bi bi-calendar3"></i> <?php echo$months[$mes['name']] . " " . $mes['year']; ?></h3>
                     <a href="create_transacao.php?mes_id=<?= $mes['id'] ?>" class="btn btn-primary">Nova transação</a>
                     <form action="acoes.php" method="POST" class="float-end">
                         <button onclick="return confirm('Tem certeza que deseja excluir este mês?')" name="delete_mes" class="btn btn-danger" type="submit" value="<?= $mes['id'] ?>">Deletar Mês</button>
                     </form>
-                    <div class="card mt-3 mb-4">
+                    <div class="card mt-3 mb-4 ">
                         <div class="card-header text-center fw-bold fs-4 p-0">
                             <p>Resumo Mensal</p>    
                         </div>
@@ -113,7 +114,7 @@ $meses = mysqli_query($conn, $sql_meses);
 
                             <?php elseif ($resultadoMes > 1): ?>
                                 <div class="card-group mt-1 text-center p-1">
-                                    <div class="card bg-success text-light">
+                                    <div class="card bg-success">
                                         <h5>
                                             Seu saldo é positivo
                                         </h5>
@@ -142,7 +143,7 @@ $meses = mysqli_query($conn, $sql_meses);
                         Suas transações do mês.
                     </div>
                 </div>
-                <table class="table table-striped-columns">
+                <table class="table table-striped-columns table-hover">
                     <thead>
                         <tr>
                             <th></th>
