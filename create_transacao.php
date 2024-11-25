@@ -100,8 +100,9 @@ if (!isset($_GET['mes_id']) || empty($_GET['mes_id'])) {
 
                             <?php 
                                 if (isset($_SESSION['message'])) {
-                                    echo "<div class='alert alert-danger'>TODOS OS CAMPOS SÃO OBRIGATÓRIOS</div>";
+                                    echo "<div class='alert alert-danger'>{$_SESSION['message']}</div>";
                                 }
+                                unset($_SESSION['message']);
                             ?>
 
                             <div class="mb-3">

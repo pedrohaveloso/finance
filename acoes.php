@@ -16,7 +16,7 @@ if (isset($_POST['create_transacao'])) {
     if (empty($data) || empty($tipo) || empty($descricao) || empty($valor) || empty($id_mes) || empty($categoria)) {
         $_SESSION['message'] = "Todos os campos são obrigatórios!";
         $_SESSION['type'] = 'error';
-        header('Location: create_transacao.php');
+        header('Location: create_transacao.php?mes_id='. $id_mes);
         exit();
     }
 
