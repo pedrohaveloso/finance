@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -71,6 +71,12 @@
                                 <label for="txtAno">Ano</label>
                                 <input type="number" class="form-control" name="txtAno">
                             </div>
+                            <?php 
+                                if (isset($_SESSION['message'])) {
+                                    echo "<div class='alert alert-danger'>{$_SESSION['message']}</div>";
+                                }
+                                unset($_SESSION['message']);
+                            ?>
 
                             <div class="mb-3">
                                 <button name="create_mes" type="submit" class="btn btn-success float-end"><i class="bi bi-floppy2-fill">  Salvar</i></button>

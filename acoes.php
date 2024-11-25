@@ -79,11 +79,16 @@ if (isset($_POST['create_mes'])){
     $mes = trim($_POST['txtMes']);
     $ano = trim($_POST['txtAno']);
 
+    if (empty($mes) || empty($ano)) {
+        $_SESSION['message'] = "Todos os campos são obrigatórios!";
+        $_SESSION['type'] = 'error';
+        header('Location: add_mes.php');
+        exit();
+    }
+
     $sql = "INSERT INTO month (name, year) VALUES ('$mes', '$ano')";
     $sqlinsert = mysqli_query($conn,$sql);
 
-    $_SESSION['message'] = "Mês criado com sucesso!";
-    $_SESSION['type'] = 'success';
 
     header('Location: index.php');
     exit();
@@ -92,11 +97,19 @@ if (isset($_POST['create_mes'])){
 
 if (isset($_POST['create_category'])){
     $nome = trim($_POST['txtNome']);
+
+    if (empty($nome)) {
+        $_SESSION['message'] = "Todos os campos são obrigatórios!";
+        $_SESSION['type'] = 'error';
+        header('Location: add_cat.php');
+        exit();
+    }
+
+
     $sql_insert = "INSERT INTO category (name) VALUES ('$nome')";
     $insert = mysqli_query($conn, $sql_insert);
 
-    $_SESSION['message'] = "Categoria criada com sucesso!";
-    $_SESSION['type'] = 'success';
+    
     
     header('Location: index.php');
     exit();
@@ -109,6 +122,13 @@ if (isset($_POST['edit_transacao'])) {
     $descricao = mysqli_real_escape_string($conn, $_POST['txtDescricao']);
     $data = mysqli_real_escape_string($conn, $_POST['txtData']);
     $categoriaId = mysqli_real_escape_string($conn, $_POST['txtCat']);
+
+    if (empty($data) || empty($tipo) || empty($descricao) || empty($valor) || empty($transacaoId) || empty($categoriaId) || empty($data)) {
+        $_SESSION['message'] = "Todos os campos são obrigatórios!";
+        $_SESSION['type'] = 'error';
+        header('Location: edit_transacao.php?id='. $transacaoId);
+        exit();
+    }
 
     $update = "UPDATE transaction SET type = '$tipo', value = '$valor', description = '$descricao', date = '$data' WHERE id = '$transacaoId'";
     $query = mysqli_query($conn, $update);

@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -51,6 +54,12 @@
                                 <label for="txtNome">Nome</label>
                                 <input type="text" name="txtNome" id="txtNome" class="form-control">
                             </div>
+                            <?php 
+                                if (isset($_SESSION['message'])) {
+                                    echo "<div class='alert alert-danger'>{$_SESSION['message']}</div>";
+                                }
+                                unset($_SESSION['message']);
+                            ?>
                             <div class="mb-3">
                                 <button name="create_category" type="submit" class="btn btn-success float-end"><i class="bi bi-floppy2-fill">  Salvar</i></button>
                             </div>
