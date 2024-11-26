@@ -10,19 +10,19 @@ if (isset($_POST['create_transacao'])) {
     $valor = trim($_POST['txtValorNovaTransacao']);
     $id_mes = trim($_POST['idMes']);
     $categoria = trim($_POST['txtCat']);
-    
 
-    
+
+
     if (empty($data) || empty($tipo) || empty($descricao) || empty($valor) || empty($id_mes) || empty($categoria)) {
         $_SESSION['message'] = "Todos os campos são obrigatórios!";
         $_SESSION['type'] = 'error';
-        header('Location: create_transacao.php?mes_id='. $id_mes);
+        header('Location: create_transacao.php?mes_id=' . $id_mes);
         exit();
     }
 
-   
 
-    
+
+
     $sql = "INSERT INTO transaction (date, type, description, value, month_id) VALUES ('$data', '$tipo', '$descricao', '$valor', '$id_mes')";
     $sqlinsert = mysqli_query($conn, $sql);
 
@@ -31,51 +31,51 @@ if (isset($_POST['create_transacao'])) {
     $sql_category = "INSERT INTO transactioncategory (transaction_id, category_id) VALUES ('$id_transacao', '$categoria')";
     $insert_category = mysqli_query($conn, $sql_category);
 
-    
-    
+
+
 
     header('Location: index.php');
     exit();
 }
-if (isset($_POST['delete_transacao'])){
-    $transacaoId = mysqli_real_escape_string($conn,($_POST['delete_transacao']));
+if (isset($_POST['delete_transacao'])) {
+    $transacaoId = mysqli_real_escape_string($conn, ($_POST['delete_transacao']));
     $sqlDeleteCategory = "DELETE FROM transactioncategory  WHERE transaction_id = '$transacaoId'";
     $sqlDelete = "DELETE FROM transaction WHERE id = '$transacaoId'";
     mysqli_query($conn, $sqlDeleteCategory);
     mysqli_query($conn, $sqlDelete);
-    
+
 
     header('Location: index.php');
     exit();
 
 }
-if (isset($_POST['delete_mes'])){
-    $mesId = mysqli_real_escape_string($conn,($_POST['delete_mes']));
+if (isset($_POST['delete_mes'])) {
+    $mesId = mysqli_real_escape_string($conn, ($_POST['delete_mes']));
     $sqlDeleteTransaction = "DELETE FROM transaction WHERE month_id = '$mesId'";
     $sqlDelete = "DELETE FROM month WHERE id = '$mesId'";
 
-    
+
     mysqli_query($conn, $sqlDeleteTransaction);
     mysqli_query($conn, $sqlDelete);
-    
+
 
     header('Location: index.php');
     exit();
 }
 
-if (isset($_POST['delete_categoria'])){
+if (isset($_POST['delete_categoria'])) {
     $category_id = mysqli_real_escape_string($conn, ($_POST['delete_categoria']));
     $sqlDeleteCategory = "DELETE FROM category WHERE id ='$category_id'";
     mysqli_query($conn, $sqlDeleteCategory);
 
-  
+
 
 
     header('Location: crud_cat.php');
     exit();
 }
 
-if (isset($_POST['create_mes'])){
+if (isset($_POST['create_mes'])) {
     $mes = trim($_POST['txtMes']);
     $ano = trim($_POST['txtAno']);
 
@@ -87,7 +87,7 @@ if (isset($_POST['create_mes'])){
     }
 
     $sql = "INSERT INTO month (name, year) VALUES ('$mes', '$ano')";
-    $sqlinsert = mysqli_query($conn,$sql);
+    $sqlinsert = mysqli_query($conn, $sql);
 
 
     header('Location: index.php');
@@ -95,7 +95,7 @@ if (isset($_POST['create_mes'])){
 
 }
 
-if (isset($_POST['create_category'])){
+if (isset($_POST['create_category'])) {
     $nome = trim($_POST['txtNome']);
 
     if (empty($nome)) {
@@ -109,8 +109,8 @@ if (isset($_POST['create_category'])){
     $sql_insert = "INSERT INTO category (name) VALUES ('$nome')";
     $insert = mysqli_query($conn, $sql_insert);
 
-    
-    
+
+
     header('Location: index.php');
     exit();
 }
@@ -126,7 +126,7 @@ if (isset($_POST['edit_transacao'])) {
     if (empty($data) || empty($tipo) || empty($descricao) || empty($valor) || empty($transacaoId) || empty($categoriaId) || empty($data)) {
         $_SESSION['message'] = "Todos os campos são obrigatórios!";
         $_SESSION['type'] = 'error';
-        header('Location: edit_transacao.php?id='. $transacaoId);
+        header('Location: edit_transacao.php?id=' . $transacaoId);
         exit();
     }
 
@@ -146,16 +146,16 @@ if (isset($_POST['edit_transacao'])) {
         }
     }
 }
-if (isset($_POST['edit_categoria'])){
+if (isset($_POST['edit_categoria'])) {
     $categoria_id = mysqli_real_escape_string($conn, $_POST['idCategoria']);
     $nome = mysqli_real_escape_string($conn, $_POST['txtNome']);
     $sql = "UPDATE category SET name = '$nome' WHERE id = '$categoria_id'";
     $query = mysqli_query($conn, $sql);
-    
+
     header('Location: crud_cat.php');
     exit();
 }
-if (isset($_POST['edit_mes'])){
+if (isset($_POST['edit_mes'])) {
     $id_mes = mysqli_real_escape_string($conn, $_POST['mes_id']);
     $nome = trim($_POST['txtMes']);
     $ano = trim($_POST['txtAno']);
@@ -165,8 +165,8 @@ if (isset($_POST['edit_mes'])){
     exit();
 }
 
-    header('Location: index.php');
-    exit();
+header('Location: index.php');
+exit();
 
 
 ?>

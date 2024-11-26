@@ -3,17 +3,24 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adicionar Categoria</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous">
     <style>
-    @media (max-width: 768px) {
+        @media (max-width: 768px) {
             .navbar-nav {
                 flex-direction: column;
             }
+
             .navbar-nav .btn {
                 margin-bottom: 5px;
             }
@@ -21,21 +28,27 @@ session_start();
     </style>
 </head>
 <nav class="navbar navbar-expand-lg bg-dark text-white">
-        <div class="container-fluid d-flex align-items-center">
-            <h2 class="mb-0 fw-bold">
-                Finance Control 
-                <i class="bi bi-wallet-fill"></i>
-            </h2>
-            <div>
-            <a class="btn bg-light fw-bold" href="index.php"><i class="bi bi-house"></i> Ínicio</a>
-                <a class="btn bg-light fw-bold" href="add_mes.php"><i class="bi bi-plus-circle"></i> Mês</a>
-                <a class="btn bg-light fw-bold  " href="add_cat.php"><i class="bi bi-plus-circle"></i> Categoria</a>  
-                <a class="btn bg-light fw-bold" href="crud_cat.php"><i class="bi bi-bookmark-star"></i></a>
-                <a class="btn bg-light fw-bold" href="crud_mes.php"><i class="bi bi-calendar"></i></a>
-            </div>
-            
+    <div class="container-fluid d-flex align-items-center">
+        <h2 class="mb-0 fw-bold">
+            Finance Control
+            <i class="bi bi-wallet-fill"></i>
+        </h2>
+        <div>
+            <a class="btn bg-light fw-bold" href="index.php"><i
+                    class="bi bi-house"></i> Ínicio</a>
+            <a class="btn bg-light fw-bold" href="add_mes.php"><i
+                    class="bi bi-plus-circle"></i> Mês</a>
+            <a class="btn bg-light fw-bold  " href="add_cat.php"><i
+                    class="bi bi-plus-circle"></i> Categoria</a>
+            <a class="btn bg-light fw-bold" href="crud_cat.php"><i
+                    class="bi bi-bookmark-star"></i></a>
+            <a class="btn bg-light fw-bold" href="crud_mes.php"><i
+                    class="bi bi-calendar"></i></a>
         </div>
+
+    </div>
 </nav>
+
 <body>
     <div class="container mt-5">
         <div class="row justify-content-center">
@@ -44,24 +57,30 @@ session_start();
                     <div class="card-header">
                         <h4 class="text-center">
                             Adicionar nova categoria de gasto
-                            <a href="index.php" class="btn btn-danger float-start shadow rounded"><i class="bi bi-arrow-return-left"></i></a>
+                            <a href="index.php"
+                                class="btn btn-danger float-start shadow rounded"><i
+                                    class="bi bi-arrow-return-left"></i></a>
                         </h4>
-                        
+
                     </div>
                     <div class="card-body">
                         <form action="acoes.php" method="POST">
                             <div class="mb-3">
                                 <label for="txtNome">Nome</label>
-                                <input type="text" name="txtNome" id="txtNome" class="form-control">
+                                <input type="text" name="txtNome" id="txtNome"
+                                    class="form-control">
                             </div>
-                            <?php 
-                                if (isset($_SESSION['message'])) {
-                                    echo "<div class='alert alert-danger p-1 col-12 col-md-6 mx-auto text-center'>{$_SESSION['message']}</div>";
-                                }
-                                unset($_SESSION['message']);
+                            <?php
+                            if (isset($_SESSION['message'])) {
+                                echo "<div class='alert alert-danger p-1 col-12 col-md-6 mx-auto text-center'>{$_SESSION['message']}</div>";
+                            }
+                            unset($_SESSION['message']);
                             ?>
                             <div class="mb-3">
-                                <button name="create_category" type="submit" class="btn btn-success float-end shadow rounded"><i class="bi bi-floppy2-fill">  Salvar</i></button>
+                                <button name="create_category" type="submit"
+                                    class="btn btn-success float-end shadow rounded"><i
+                                        class="bi bi-floppy2-fill">
+                                        Salvar</i></button>
                             </div>
                         </form>
                     </div>
@@ -69,17 +88,21 @@ session_start();
             </div>
         </div>
     </div>
-    
-
-
-
-    
 
 
 
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+
+
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

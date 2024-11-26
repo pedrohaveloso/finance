@@ -14,8 +14,13 @@ $mes = mysqli_fetch_assoc($query);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous">
     <title>Editar Mês</title>
 </head>
 
@@ -27,11 +32,16 @@ $mes = mysqli_fetch_assoc($query);
                 <i class="bi bi-wallet-fill"></i>
             </h2>
             <div>
-                <a class="btn bg-light fw-bold" href="index.php"><i class="bi bi-house"></i> Ínicio</a>
-                <a class="btn bg-light fw-bold" href="add_mes.php"><i class="bi bi-plus-circle"></i> Mês</a>
-                <a class="btn bg-light fw-bold  " href="add_cat.php"><i class="bi bi-plus-circle"></i> Categoria</a>
-                <a class="btn bg-light fw-bold" href="crud_cat.php"><i class="bi bi-bookmark-star"></i></a>
-                <a class="btn bg-light fw-bold" href="crud_mes.php"><i class="bi bi-calendar"></i></a>
+                <a class="btn bg-light fw-bold" href="index.php"><i
+                        class="bi bi-house"></i> Ínicio</a>
+                <a class="btn bg-light fw-bold" href="add_mes.php"><i
+                        class="bi bi-plus-circle"></i> Mês</a>
+                <a class="btn bg-light fw-bold  " href="add_cat.php"><i
+                        class="bi bi-plus-circle"></i> Categoria</a>
+                <a class="btn bg-light fw-bold" href="crud_cat.php"><i
+                        class="bi bi-bookmark-star"></i></a>
+                <a class="btn bg-light fw-bold" href="crud_mes.php"><i
+                        class="bi bi-calendar"></i></a>
             </div>
 
         </div>
@@ -48,13 +58,16 @@ $mes = mysqli_fetch_assoc($query);
                     </div>
                     <div class="card-body">
                         <form action="acoes.php" method="POST">
-                            <input type="hidden" name="mes_id" value="<?=$mes_id?>">
+                            <input type="hidden" name="mes_id"
+                                value="<?= $mes_id ?>">
                             <label for="txtMes">Selecione um Mês</label>
                             <select class="form-select" name="txtMes">
-                                <option value="January" <?= $mes['name'] == 'January' ? 'selected' : '' ?>>
+                                <option value="January"
+                                    <?= $mes['name'] == 'January' ? 'selected' : '' ?>>
                                     <p>Janeiro</p>
                                 </option>
-                                <option value="February" <?= $mes['name'] == 'February' ? 'selected' : '' ?>>
+                                <option value="February"
+                                    <?= $mes['name'] == 'February' ? 'selected' : '' ?>>
                                     <p>Fevereiro</p>
                                 </option>
                                 <option value="March" <?= $mes['name'] == 'March' ? 'selected' : '' ?>>
@@ -75,24 +88,32 @@ $mes = mysqli_fetch_assoc($query);
                                 <option value="August" <?= $mes['name'] == 'August' ? 'selected' : '' ?>>
                                     <p>Agosto</p>
                                 </option>
-                                <option value="September" <?= $mes['name'] == 'September' ? 'selected' : '' ?>>
+                                <option value="September"
+                                    <?= $mes['name'] == 'September' ? 'selected' : '' ?>>
                                     <p>Setembro</p>
                                 </option>
-                                <option value="October" <?= $mes['name'] == 'October' ? 'selected' : '' ?>>
+                                <option value="October"
+                                    <?= $mes['name'] == 'October' ? 'selected' : '' ?>>
                                     <p>Outubro</p>
                                 </option>
-                                <option value="November" <?= $mes['name'] == 'November' ? 'selected' : '' ?>>
+                                <option value="November"
+                                    <?= $mes['name'] == 'November' ? 'selected' : '' ?>>
                                     <p>Novembro</p>
                                 </option>
-                                <option value="December" <?= $mes['name'] == 'December' ? 'selected' : '' ?>>
+                                <option value="December"
+                                    <?= $mes['name'] == 'December' ? 'selected' : '' ?>>
                                     <p>Dezembro</p>
                                 </option>
                             </select>
                             <div class="mb-3">
                                 <label for="txtAno">Ano</label>
-                                <input type="number" class="form-control" name="txtAno" value="<?= $mes['year'] ?>">
+                                <input type="number" class="form-control"
+                                    name="txtAno" value="<?= $mes['year'] ?>">
                             </div>
-                            <button name="edit_mes" type="submit" class="btn btn-success float-end"><i class="bi bi-floppy2-fill"> Salvar</i></button>
+                            <button name="edit_mes" type="submit"
+                                class="btn btn-success float-end"><i
+                                    class="bi bi-floppy2-fill">
+                                    Salvar</i></button>
                         </form>
                         <a href="crud_mes.php" class="btn btn-danger">Voltar</a>
                     </div>
@@ -109,7 +130,10 @@ $mes = mysqli_fetch_assoc($query);
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

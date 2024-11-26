@@ -1,4 +1,5 @@
 CREATE DATABASE IF NOT EXISTS `Finance`;
+
 USE Finance;
 
 CREATE TABLE
@@ -42,8 +43,15 @@ CREATE TABLE
     `year` INT (4) UNSIGNED NOT NULL
   );
 
-INSERT INTO month (name, year) VALUES ('January',2024);
-INSERT INTO month (name, year) VALUES ('February',2024);
+INSERT INTO
+  month (name, year)
+VALUES
+  ('January', 2024);
+
+INSERT INTO
+  month (name, year)
+VALUES
+  ('February', 2024);
 
 CREATE TABLE
   IF NOT EXISTS `Transaction` (
@@ -60,8 +68,7 @@ CREATE TABLE
   IF NOT EXISTS `TransactionCategory` (
     `id` INT PRIMARY KEY AUTO_INCREMENT,
     `transaction_id` INT NOT NULL,
-    FOREIGN KEY (`transaction_id`) REFERENCES `Transaction` (`id`) ON DELETE CASCADE ,
+    FOREIGN KEY (`transaction_id`) REFERENCES `Transaction` (`id`) ON DELETE CASCADE,
     `category_id` INT NOT NULL,
-    FOREIGN KEY (`category_id`) REFERENCES `Category` (`id`) ON DELETE CASCADE 
-    
+    FOREIGN KEY (`category_id`) REFERENCES `Category` (`id`) ON DELETE CASCADE
   );
