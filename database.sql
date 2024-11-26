@@ -3,10 +3,18 @@ CREATE DATABASE IF NOT EXISTS `Finance`;
 USE Finance;
 
 CREATE TABLE
+  IF NOT EXISTS `User` (
+    `id` INT PRIMARY KEY AUTO_INCREMENT,
+    `email` VARCHAR(120) NOT NULL,
+    `password` VARCHAR(120) NOT NULL
+  );
+
+CREATE TABLE
   IF NOT EXISTS `Category` (
     `id` INT PRIMARY KEY AUTO_INCREMENT,
     `name` VARCHAR(120) NOT NULL,
-    `priority` INT (5) UNSIGNED DEFAULT (0) NOT NULL
+    `user_id` INT DEFAULT NULL,
+    FOREIGN KEY (`user_id`) REFERENCES `User` (`id`) ON DELETE CASCADE
   );
 
 INSERT INTO
@@ -40,18 +48,10 @@ CREATE TABLE
       'November',
       'December'
     ) NOT NULL,
-    `year` INT (4) UNSIGNED NOT NULL
+    `year` INT (4) UNSIGNED NOT NULL,
+    `user_id` INT,
+    FOREIGN KEY (`user_id`) REFERENCES `User` (`id`) ON DELETE CASCADE
   );
-
-INSERT INTO
-  month (name, year)
-VALUES
-  ('January', 2024);
-
-INSERT INTO
-  month (name, year)
-VALUES
-  ('February', 2024);
 
 CREATE TABLE
   IF NOT EXISTS `Transaction` (
@@ -60,15 +60,10 @@ CREATE TABLE
     `type` ENUM ('input', 'output') NOT NULL,
     `description` TEXT NOT NULL,
     `value` DECIMAL(15, 2) NOT NULL,
-    `month_id` INT NOT NULL,
-    FOREIGN KEY (`month_id`) REFERENCES `Month` (`id`)
-  );
-
-CREATE TABLE
-  IF NOT EXISTS `TransactionCategory` (
-    `id` INT PRIMARY KEY AUTO_INCREMENT,
-    `transaction_id` INT NOT NULL,
-    FOREIGN KEY (`transaction_id`) REFERENCES `Transaction` (`id`) ON DELETE CASCADE,
     `category_id` INT NOT NULL,
-    FOREIGN KEY (`category_id`) REFERENCES `Category` (`id`) ON DELETE CASCADE
+    FOREIGN KEY (`category_id`) REFERENCES `Category` (`id`) ON DELETE CASCADE,
+    `month_id` INT NOT NULL,
+    FOREIGN KEY (`month_id`) REFERENCES `Month` (`id`) ON DELETE CASCADE,
+    `user_id` INT,
+    FOREIGN KEY (`user_id`) REFERENCES `User` (`id`) ON DELETE CASCADE
   );
