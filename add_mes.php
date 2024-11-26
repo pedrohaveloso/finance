@@ -45,7 +45,7 @@ session_start();
                     <div class="card-header">
                         <h4 class="text-center">
                             Adicionar Mês
-                            <a href="index.php" class="btn btn-danger float-start"><i class="bi bi-arrow-return-left"></i></a>
+                            <a href="index.php" class="btn btn-danger float-start shadow rounded"><i class="bi bi-arrow-return-left"></i></a>
                         </h4>
                         
                     </div>
@@ -79,7 +79,7 @@ session_start();
                             ?>
 
                             <div class="mb-3">
-                                <button name="create_mes" type="submit" class="btn btn-success float-end"><i class="bi bi-floppy2-fill">  Salvar</i></button>
+                                <button name="create_mes" type="submit" class="btn btn-success float-end shadow rounded"><i class="bi bi-floppy2-fill">  Salvar</i></button>
                             </div>
                         </form>
                     </div>

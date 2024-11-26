@@ -65,16 +65,16 @@ $categorias = mysqli_query($conn, $sql);
                                     <td><?= $categoria['name'];?>
                                 </td>
                                 <td class="d-flex justify-content-center gap-3  ">
-                                    <a href="edit_cat.php?category_id=<?= $categoria['id'];?>"class="btn btn-primary"><i class="bi bi-pencil-square"></i></button></a>
+                                    <a href="edit_cat.php?category_id=<?= $categoria['id'];?>"class="btn btn-primary shadow rounded"><i class="bi bi-pencil-square"></i></button></a>
                                     <form action="acoes.php" method="POST">
-                                        <button name="delete_categoria" onclick="return confirm('Tem certeza que deseja excluir essa categoria?')" class="btn btn-danger" value="<?= $categoria['id']?>"><i class="bi bi-file-earmark-minus"></i></button>
+                                        <button name="delete_categoria" onclick="return confirm('Tem certeza que deseja excluir essa categoria?')" class="btn btn-danger shadow rounded" value="<?= $categoria['id']?>"><i class="bi bi-file-earmark-minus"></i></button>
                                     </form>
                                 </button></td>
                                 </tr>
                                 <?php endforeach ?>
                             </tbody>
                         </table>
-                        <a href="index.php" class="btn btn-danger">Voltar</a> 
+                        <a href="index.php" class="btn btn-danger shadow rounded">Voltar</a> 
                     </div>
                 </div>
             </div>

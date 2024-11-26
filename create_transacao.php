@@ -109,8 +109,8 @@ $mesId = $Mes->fetch_assoc();
 
 
                             <div class="mb-3">
-                                <a href="index.php" class="btn btn-danger">Voltar</a>    
-                                <button name="create_transacao" type="submit" class="btn btn-success float-end"><i class="bi bi-credit-card-2-back"></i>  Criar</i></button>
+                                <a href="index.php" class="btn btn-danger shadow rounded">Voltar</a>    
+                                <button name="create_transacao" type="submit" class="btn btn-success float-end shadow rounded"><i class="bi bi-credit-card-2-back"></i>  Criar</i></button>
                             </div>
                         </form>
                     </div>
