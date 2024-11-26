@@ -1,5 +1,4 @@
 <?php
-ini_set('display_errors', 1);
 
 include __DIR__ . '/app/bootstrap.php';
 
@@ -38,7 +37,7 @@ $months = $conn->query($query)->fetch_all(MYSQLI_ASSOC);
 
         ?>
 
-        <details open class="container mt-5">
+        <details open class="container mt-5 mb-5">
             <summary class="container border border-4">
                 <h3 class="pt-3 pb-2 text-center">
                     <?= MONTHS[$month['name']] . " {$month['year']}"; ?>
