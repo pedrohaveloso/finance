@@ -103,7 +103,7 @@ if (empty($_GET['transaction_id'])) {
                             <label for="description">Descrição</label>
 
                             <textarea name="description" id="description"
-                                rows="3"
+                                rows="3" required
                                 class="form-control"><?= $transaction['description'] ?? '' ?></textarea>
                         </div>
 
@@ -111,6 +111,7 @@ if (empty($_GET['transaction_id'])) {
                             <label for="value">Valor</label>
 
                             <input type="number" id="value" name="value"
+                                step="0.01" required
                                 value="<?= $transaction['value'] ?? '' ?>"
                                 class="form-control">
                         </div>

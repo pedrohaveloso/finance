@@ -46,7 +46,7 @@ $categories = $conn->query($query)->fetch_all(MYSQLI_ASSOC);
 
                             <?php foreach ($categories as $category): ?>
                                 <tr>
-                                    <td class="align-middle">
+                                    <td data-label="Nome: " class="align-middle">
                                         <?= $category['name'] ?>
                                     </td>
 

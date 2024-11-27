@@ -93,7 +93,7 @@ $months = $conn->query($query)->fetch_all(MYSQLI_ASSOC);
                         <div
                             class="card-body fw-4 p-1  d-flex justify-content-center align-items-center">
                             <div class="card-group mt-2 mb-1 w-50 shadow rounded">
-                                <div class="card text-center"
+                                <div class="card text-center mb-0"
                                     style="background-color: rgb(204,255,204); ">
 
                                     <h5 class="text-success fw-bold pt-1">
@@ -101,7 +101,7 @@ $months = $conn->query($query)->fetch_all(MYSQLI_ASSOC);
                                     </h5>
                                 </div>
 
-                                <div class="card text-center"
+                                <div class="card text-center mb-0"
                                     style="background-color: rgb(255,153,153);">
 
                                     <h5 class="text-danger fw-bold pt-1">
@@ -186,29 +186,32 @@ $months = $conn->query($query)->fetch_all(MYSQLI_ASSOC);
 
                                         ?>
 
-                                        <td class="align-middle">
+                                        <td data-label="Transação: " class="align-middle">
                                             <?= TYPES[$transaction['type']]; ?>
                                         </td>
 
-                                        <td class="align-middle">
+                                        <td data-label="Valor: " class="align-middle">
                                             <?= 'R$ ' . $transaction['value']; ?>
                                         </td>
 
-                                        <td class="align-middle">
+                                        <td data-label="Descrição: " class="align-middle">
                                             <?= $transaction['description']; ?>
                                         </td>
 
-                                        <td class="align-middle">
+                                        <td data-label="Data da transação: "
+                                            class="align-middle">
                                             <?= date_create_from_format('Y-m-d', $transaction['date'])->format('d/m/Y'); ?>
                                         </td>
 
-                                        <td class="align-middle">
+                                        <td data-label="Categoria: " class="align-middle">
                                             <?php if (!empty($category['name'])): ?>
                                                 <?= $category['name'] ?>
                                             <?php endif ?>
                                         </td>
 
-                                        <td class="d-flex justify-content-end gap-2">
+                                        <td data-label="Ações: "
+                                            class="align-middle d-flex justify-content-end gap-2"
+                                            style="align-items: center;">
                                             <form
                                                 action="actions/delete_transaction.php?transaction_id=<?= $transaction['id'] ?>"
                                                 method="post">

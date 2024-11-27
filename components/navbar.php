@@ -6,14 +6,15 @@ function navbar(): void
 
     <nav class="navbar navbar-expand-lg bg-dark text-white">
         <div class="container-fluid d-flex align-items-center">
-            <a href="index.php" style="text-decoration: inherit; color: inherit;">
+            <a href="index.php" class="navbar-app-title"
+                style="text-decoration: inherit; color: inherit;">
                 <h2 class="mb-0 fw-bold">
                     Finance Control
                     <i class="bi bi-wallet-fill"></i>
                 </h2>
             </a>
 
-            <div>
+            <div class="navbar-app-menu">
                 <a class="btn bg-light fw-bold" href="index.php">
                     <i class="bi bi-house"></i>
                 </a>
