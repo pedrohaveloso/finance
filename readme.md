@@ -15,7 +15,7 @@ Projeto desenvolvido para a disciplina de Desenvolvimento Web no Curso de Análi
 
 ## Sobre
 
-O Finance é um gerenciador de financias pessoais, com opções para adição de categorias de gastos e ganhos, adição de meses de gastos e de transações (entrada ou saída) em determinados meses.
+O Finance é um gerenciador de finanças pessoais, com opções para adição de categorias de gastos e ganhos, adição de meses de gastos e de transações (entrada ou saída) em determinados meses.
 
 Esse projeto foi criado utilizando PHP, HTML, Bootstrap e MySQL.
 
